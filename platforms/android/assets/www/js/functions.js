@@ -8,7 +8,7 @@ function onBodyLoad()
 {
   
     document.addEventListener("offline", onDeviceOffline, false);
-    document.addEventListener("online", isjsonready, false);
+    document.addEventListener("online", onDeviceOnline, false);
     
     /*these don't work*/
      ref.addEventListener('loadstart', function(event) { /*alert('start: ' + event.url);*/ });
@@ -163,13 +163,13 @@ var varlidORDERIDS = [];//set back to zero whenever rendercartlist
 /*~~~~~~~~~~~~~~~~~~~~//GLOBAL VARIABLES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 
-function isjsonready()//i'm thinking of checking them all at once instead of by table because I can check the CATALOGUE_MASTER table first.. and batch delete multiple items from inventory_master_catalogue,and other tables. If i check only one table at a time, it'll take longger. I think.
-{//APPENDED STUFF IS FOR getjsontest page.
+function onDeviceOnline()
+{
  
     if((networkstatus != 'connected' || networkstatus == ''))
-    {networkstatus = 'connected';//networkstatus is set back to '' when checkig inorder to see results so SysPk_CatgyMstrARR.length <= 0 is added to  prevent from pushing to array twice
-     
-     //   alert('device is online. getting json info');
+    {
+        networkstatus = 'connected';//networkstatus is set back to '' when checkig inorder to see results so SysPk_CatgyMstrARR.length <= 0 is added to  prevent from pushing to array twice
+        alert('onDeviceOnline->'+networkstatus);    
 
             $.when(
                    $.getJSON('http://viveg.net/glogapitest/index.php?table=INVENTORY_MASTER_CATALOGUE'),
@@ -458,7 +458,7 @@ function isjsonready()//i'm thinking of checking them all at once instead of by 
                 
             }).then(function(objects)
             {
-                  onDeviceOffline();
+                  initializeDB();
              
             });
     }
@@ -489,16 +489,27 @@ function successCB()
 }
 
 
-function onDeviceOffline()
-{   
-    if(networkstatus != 'disconnected')
-    { 
-        networkstatus = 'disconnected';
-        
-        db = window.openDatabase("Database","1.0","Cordova Demo", 4*1024*1024);
-        db.transaction(createTBinventorymastercatalogue, errorCB, successCB);
-    }  
+
+function initializeDB()
+{
+    alert('initializeDB');
+     db = window.openDatabase("Database","1.0","Cordova Demo", 4*1024*1024);
+     db.transaction(createTBinventorymastercatalogue, errorCB, successCB);
 }
+
+
+function onDeviceOffline()
+{
+    initializeDB();
+
+    if(networkstatus != 'disconnected' || networkstatus == '')
+    {
+        networkstatus = 'disconnected';    
+        alert('onDeviceOffline ->'+ networkstatus);
+    }
+}
+
+
 
 
 
