@@ -61,15 +61,8 @@ if(localStorage.BarcodeInvtyCat == null)
     var cartQuantityArr;
     var cartsubtotalArr;
 	var cartorderedFromArr;//to know whether item was ordered from scan or catalogue or search
-    var carttextureFromArr;
-    var cartsizeFromArr;
-    
-    var carttexturechoicesArr;
-    var cartsizechoicesArr;
-    
 
-    var texturechoicesStr;
-    var sizechoicesStr;
+
     
     /*initialized on placeOrder click*/
     //NOTE: x,y,z,
@@ -87,16 +80,12 @@ if(localStorage.BarcodeInvtyCat == null)
     localStorage.quantity = '';
     localStorage.subtotal = '';
     localStorage.orderedfrom ='';
-	localStorage.texture  = '';
-    localStorage.size = '';
-    
+
     /*initialized on renderCart*/
     localStorage.orderid='';
     
     
-    /*for edit order page color selection*/
-    localStorage.texturechoicesFOREDITPAGE = '';
-    localStorage.sizechoicesFOREDITPAGE ='';
+
 
 
 }
@@ -163,21 +152,9 @@ var varlidORDERIDS = [];//set back to zero whenever rendercartlist
                     //--//INVENTORY_MASTER_CATALOGUE_CATEGORY
 
 
-                    //--INVENTORY_MASTER_CATALOGUE_ATTRIBUTES
-                    var RowNumber_InvtyCatAttrARR = [];
-                    var SysFk_InvtyCat_InvtyCatAttrARR = [];
-                    var textureARR = [];
-                    var one_sizeARR = [];
-                    var xsARR = [];
-                    var sARR = [];
-                    var mARR = [];
-                    var lARR = [];
-                    var xlARR = [];
 
-                    var invtycatattrRC = 0;
-                    var invtycatattrtxparam;
-                //--//INVENTORY_MASTER_CATALOGUE_ATTRIBUTES
 
+          
 
 
 
@@ -199,12 +176,12 @@ function isjsonready()//i'm thinking of checking them all at once instead of by 
                    $.getJSON('http://viveg.net/glogapitest/index.php?table=CATALOGUE_MASTER'),
                    $.getJSON('http://viveg.net/glogapitest/index.php?table=SETTINGS'),
                    $.getJSON('http://viveg.net/glogapitest/index.php?table=CATEGORY_MASTER'),
-                   $.getJSON('http://viveg.net/glogapitest/index.php?table=INVENTORY_MASTER_CATALOGUE_CATEGORY'),
-                   $.getJSON('http://viveg.net/glogapitest/index.php?table=INVENTORY_MASTER_CATALOGUE_ATTRIBUTES')
-                  ).done(function(invtycat, catmstr,settings,catgymstr,InvtyCatCatgy,InvtyCatAttr)
+                   $.getJSON('http://viveg.net/glogapitest/index.php?table=INVENTORY_MASTER_CATALOGUE_CATEGORY')
+                  ).done(function(invtycat, catmstr,settings,catgymstr,InvtyCatCatgy)
             {
 
-                //if(SysPk_CatgyMstrARR.length <= 0) {
+                if(SysPk_CatgyMstrARR.length <= 0)
+                {
                     
                  $('.getjsontest').append("<br><br>----INVENTORY_MASTER_CATALOGUE----<br><br>");
                     $.each( invtycat[0], function( index, value ) 
@@ -475,89 +452,9 @@ function isjsonready()//i'm thinking of checking them all at once instead of by 
                 
                 
                 
-                
-                
-                
-                
-                
-                 $('.getjsontest').append("<br><br>--- INVENTORY_MASTER_CATALOGUE_ATTRIBUTES----<br><br>");
-
-                    $.each(InvtyCatAttr[0], function( index, value ) 
-                         {
-                            $.each(value, function(inde, valu)
-                                    {
-
-
-                                        $.each(valu, function(ind, val)
-                                        {
-                                            $.each( val, function( i, v )
-                                            {
-
-
-                                                    if(i == "RowNumber_InvtyCatAttr")
-                                                    {
-                                                        RowNumber_InvtyCatAttrARR.push(val[i]);
-                                                        $('.getjsontest').append(val[i] + " inserted to array RowNumber_InvtyCatAttrARR<br>");
-                                                    }
-                                                    else if(i == "SysFk_InvtyCat_InvtyCatAttr")
-                                                    {
-                                                      SysFk_InvtyCat_InvtyCatAttrARR.push(val[i]);
-                                                        $('.getjsontest').append(val[i] + " inserted to array SysFk_InvtyCat_InvtyCatAttrARR<br>");
-                                                    }
-                                                    else if(i == "texture")
-                                                    {
-                                                       textureARR.push(val[i]);
-                                                        $('.getjsontest').append(val[i] + " inserted to array textureARR<br>");
-                                                    }
-                                                    else if(i == "one_size")
-                                                    {
-                                                        one_sizeARR.push(val[i]);
-                                                        $('.getjsontest').append(val[i] + " inserted to array one_sizeARR<br>");
-                                                    }
-                                                    else if(i == "xs")
-                                                    {
-                                                        xsARR.push(val[i]);
-                                                        $('.getjsontest').append(val[i] + " inserted to array xsARR<br>");
-                                                    }
-                                                    else if(i == "s")
-                                                    {
-                                                        sARR.push(val[i]);
-                                                        $('.getjsontest').append(val[i] + " inserted to array sARR<br>");
-                                                    }
-                                                    else if(i == "m")
-                                                    {
-                                                        mARR.push(val[i]);
-                                                        $('.getjsontest').append(val[i] + " inserted to array mARR<br>");
-                                                    }
-                                                    else if(i == "l")
-                                                    {
-                                                        lARR.push(val[i]);
-                                                        $('.getjsontest').append(val[i] + " inserted to array lARR<br>");
-                                                    }
-                                                    else if(i == "xl")
-                                                    {
-                                                        xlARR.push(val[i]);
-                                                        $('.getjsontest').append(val[i] + " inserted to array xlARR<br>");
-                                                    }
-
-
-                                            });	
-
-                                        });	
-
-                                    });
-                        });
-
-
-                $('.getjsontest').append("<br><br>---//INVENTORY_MASTER_CATALOGUE_ATTRIBUTES----<br><br>");
-                
-                
-                
-                
-                
                     
                     
-              //  }//if(SysPk_CatgyMstrARR.length <= 0)
+               }//if(SysPk_CatgyMstrARR.length <= 0)
                 
             }).then(function(objects)
             {
@@ -697,13 +594,6 @@ function createTBinventorymastercataloguecategory(tx)
 }
     
 
-function createTBInventoryMasterCatalogueAttributes(tx)
-{  // alert('creating invetory_master_catalogue_attributes');
-    var q7 ="";
-    q7 +="CREATE TABLE IF NOT EXISTS INVENTORY_MASTER_CATALOGUE_ATTRIBUTES";
-    q7 += "(RowNumber_InvtyCatAttr,SysFk_InvtyCat_InvtyCatAttr,texture,one_size,xs,s,m,l,xl)";
-    tx.executeSql(q7,[],deleteLocalInvtyCatAttr,errorCB);//skipping deleteLocal because it deletes everything for some reason.
-}
 
 
 
@@ -1228,10 +1118,9 @@ function checkExistsInvtyCatCatgy(tx)//populateInvtyCatCatgy(tx)
            // alert('no more array data - catgymstr');
 			invtycatcatgyRC = 0;
 
-            //db.transaction(queryForExpired,errorCB);//comment out and move to next table if there's still another table to create.
+            db.transaction(queryForExpired,errorCB);//comment out and move to next table if there's still another table to create.
             //create table here
-            db.transaction(createTBInventoryMasterCatalogueAttributes,errorCB);
-            
+           
      
 		}
         
@@ -1240,10 +1129,9 @@ function checkExistsInvtyCatCatgy(tx)//populateInvtyCatCatgy(tx)
     {
        //alert('this is the last table created. proceed to deleting expired stuff. - catgymstr');
 
-       // db.transaction(queryForExpired,errorCB);//move to else of last created table
+        db.transaction(queryForExpired,errorCB);//move to else of last created table
         //create table here
-        db.transaction(createTBInventoryMasterCatalogueAttributes,errorCB);
-        
+
         
     }
     
@@ -1276,129 +1164,6 @@ function rendercheckExistsInvtyCatCatgy(tx7,results)
        
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function deleteLocalInvtyCatAttr(tx)
-{
-   
-
-    if ( RowNumber_InvtyCatAttrARR.length <= 0 )//isOffline
-    {
-      //  alert('offline. not delting from invtycatattr');
-            var sqldeletedeletedInvtyCatAttr = 'SELECT * FROM INVENTORY_MASTER_CATALOGUE_ATTRIBUTES LIMIT 1';//does not matter what statement is here. just to prevent error from executing null sql. OR maybe i can just write checkExistsCatAttr(tx)..  maybe...
-   	        tx.executeSql(sqldeletedeletedInvtyCatAttr,[],checkExistsInvtyCatAttr,errorCB);
-    }
-    else
-    {
-           
-    //    alert('online. deleting not in json. -invtycatattr');
-       var sqldeletedeletedInvtyCatAttr = 'DELETE FROM INVENTORY_MASTER_CATALOGUE_ATTRIBUTES WHERE RowNumber_InvtyCatAttr NOT IN(?)';
-        tx.executeSql(sqldeletedeletedInvtyCatAttr,[RowNumber_InvtyCatAttrARR],checkExistsInvtyCatAttr,errorCB);
-        
-
-
-    }
-
-	  
-}
-
-
-function checkExistsInvtyCatAttr(tx)
-{// alert('checkexistsinvtycatattr');
-   
-       var RecordBeingProcessesd =  invtycatattrRC + 1;
-        invtycatattrtxparam = tx;
-    
-     if(RowNumber_InvtyCatAttrARR.length > 0)
-    {
-        if(RecordBeingProcessesd <= RowNumber_InvtyCatAttrARR.length)
-		{
-          // alert('Processing '+ RecordBeingProcessesd +' of ' + RowNumber_InvtyCatAttrARR.length );
-            db.transaction(function(tx8)
-           {    var sqlselectinvtycatattr = "SELECT * FROM INVENTORY_MASTER_CATALOGUE_ATTRIBUTES WHERE RowNumber_InvtyCatAttr=?";
-                 tx8.executeSql(sqlselectinvtycatattr,[RowNumber_InvtyCatAttrARR[invtycatattrRC]],rendercheckExistsInvtyCatAttr,errorCB);
-            },errorCB,function(){  /*alert('now at tx8 callback');*/ invtycatattrRC +=1; checkExistsInvtyCatAttr(invtycatattrtxparam);});
-        }
-        else
-		{
-           // alert('no more array data - catgymstr');
-			invtycatattrRC = 0;
-
-            db.transaction(queryForExpired,errorCB);//comment out and move to next table if there's still another table to create.
-            //create table here
-        
-     
-		}
-        
-    }
-    else
-    {
-       //alert('this is the last table created. proceed to deleting expired stuff. - catgymstr');
-
-       db.transaction(queryForExpired,errorCB);//move to else of last created table
-        //create table here
-       
-        
-        
-    }
-    
-
-}
-
-
-
-function rendercheckExistsInvtyCatAttr(tx8,results)
-{      /* alert('render ' + RowNumber_InvtyCatAttrARR[invtycatattrRC]+','+SysFk_InvtyCat_InvtyCatAttrARR[invtycatattrRC]+','+textureARR[invtycatattrRC]+','+one_sizeARR[invtycatattrRC]+','+xsARR[invtycatattrRC]+','+sARR[invtycatattrRC]+','+mARR[invtycatattrRC]+','+lARR[invtycatattrRC]+','+xlARR[invtycatattrRC]);*/
-       
-        
-     if(results.rows.length <= 0)
-    {
-       
-
-    
-            var sqlinsertinvtycatattr = "INSERT INTO INVENTORY_MASTER_CATALOGUE_ATTRIBUTES(RowNumber_InvtyCatAttr,SysFk_InvtyCat_InvtyCatAttr,texture,one_size,xs,s,m,l,xl) Values(?,?,?,?,?,?,?,?,?)";
-            
-                tx8.executeSql(sqlinsertinvtycatattr,[RowNumber_InvtyCatAttrARR[invtycatattrRC],SysFk_InvtyCat_InvtyCatAttrARR[invtycatattrRC],textureARR[invtycatattrRC],one_sizeARR[invtycatattrRC],xsARR[invtycatattrRC],sARR[invtycatattrRC],mARR[invtycatattrRC],lARR[invtycatattrRC],+xlARR[invtycatattrRC]],function(){/* alert(RowNumber_InvtyCatAttrARR[invtycatattrRC] + ' inserted');*/},errorCB);
-         
-    }
-    else
-    {
-    
-       // alert(RowNumber_InvtyCatAttrARR[invtycatattrRC] +' already exists. Updating info.');
-  
-        var sqlupdateinvtycatattr = "UPDATE INVENTORY_MASTER_CATALOGUE_ATTRIBUTES SET SysFk_InvtyCat_InvtyCatAttr = ?,texture = ?,one_size = ?,xs = ?,s = ?,m = ?,l = ?,xl = ? WHERE RowNumber_InvtyCatAttr = ?";
-        tx8.executeSql(sqlupdateinvtycatattr,[SysFk_InvtyCat_InvtyCatAttrARR[invtycatattrRC],textureARR[invtycatattrRC],one_sizeARR[invtycatattrRC],xsARR[invtycatattrRC],sARR[invtycatattrRC],mARR[invtycatattrRC],lARR[invtycatattrRC],+xlARR[invtycatattrRC],results.rows.item(0).RowNumber_InvtyCatAttr],function(){/*alert(results.rows.item(0).RowNumber_InvtyCatAttr  + ' updated');*/} ,errorCB);
-        
-       
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1601,7 +1366,7 @@ function queryForSearch(tx)
 {
   
 	
-    var enteredBarcode = $('input[name="search-barcode"]').val();
+ var enteredBarcode = $('input[name="search-barcode"]').val();
 	var enteredPromoname = $('input[name="search-promoname"]').val();
     var enteredfulldescription = $('input[name="search-fulldescription"]').val();
 	var enteredBrand = $('input[name="search-brand"]').val();
@@ -1613,8 +1378,7 @@ function queryForSearch(tx)
 	//alert('barcode length: ' + enteredBarcodelength);
 	if(enteredBarcodelength > 0)
 	{
-	  //var barcodeWhereString  = ' IMCIMCCatgy.Barcode_InvtyCat = "' + enteredBarcode +'"';
-	  var barcodeWhereString  = ' CATGYMCMIMCIMCCatgy.Barcode_InvtyCat = "' + enteredBarcode +'"';
+	  var barcodeWhereString  = ' IMCIMCCatgy.Barcode_InvtyCat = "' + enteredBarcode +'"';
 	}
 	else
 	{
@@ -1627,8 +1391,7 @@ function queryForSearch(tx)
 	if(enteredPromonamelength > 0)
 	{
 		replaceQuotes(enteredPromoname);
-	  //var promonameWhereString  = ' AND  IMCIMCCatgy.PromoName_InvtyCat LIKE  "%' + returnedReplaceQuote  +'%"';
-	  var promonameWhereString  = ' AND  CATGYMCMIMCIMCCatgy.PromoName_InvtyCat LIKE  "%' + returnedReplaceQuote  +'%"';
+	  var promonameWhereString  = ' AND  IMCIMCCatgy.PromoName_InvtyCat LIKE  "%' + returnedReplaceQuote  +'%"';
 
 	}
 	else
@@ -1641,8 +1404,7 @@ function queryForSearch(tx)
 	if(enteredfulldescriptionlength > 0)
 	{
 		replaceQuotes(enteredfulldescription);
-	 // var fulldescriptionWhereString  = ' AND  IMCIMCCatgy.FullDescription_InvtyCat LIKE  "%' + returnedReplaceQuote +'%"';
-	  var fulldescriptionWhereString  = ' AND  CATGYMCMIMCIMCCatgy.FullDescription_InvtyCat LIKE  "%' + returnedReplaceQuote +'%"';
+	  var fulldescriptionWhereString  = ' AND  IMCIMCCatgy.FullDescription_InvtyCat LIKE  "%' + returnedReplaceQuote +'%"';
 	}
 	else
 	{
@@ -1654,8 +1416,7 @@ function queryForSearch(tx)
 	//alert('brand length: ' + enteredBrandlength);
 	if(enteredBrandlength > 0)
 	{
-	  //var brandWhereString  = ' AND  IMCIMCCatgy.Brand_InvtyCat LIKE  "%' + enteredBrand +'%"';
-	  var brandWhereString  = ' AND  CATGYMCMIMCIMCCatgy.Brand_InvtyCat LIKE  "%' + enteredBrand +'%"';
+	  var brandWhereString  = ' AND  IMCIMCCatgy.Brand_InvtyCat LIKE  "%' + enteredBrand +'%"';
 	}
 	else
 	{
@@ -1667,8 +1428,7 @@ function queryForSearch(tx)
 
 	if(enteredCataloguelength > 0)
 	{
-	  //var CatalogueWhereString  = ' AND  CM.SysPk_CatMstr =  "' + enteredCatalogue +'"';
-	  var CatalogueWhereString  = ' AND  CATGYMCMIMCIMCCatgy.SysPk_CatMstr =  "' + enteredCatalogue +'"';
+	  var CatalogueWhereString  = ' AND  CM.SysPk_CatMstr =  "' + enteredCatalogue +'"';
 	}
 	else
 	{
@@ -1679,8 +1439,7 @@ function queryForSearch(tx)
 	//alert('Category length: ' + enteredCategorylength);
 	if(enteredCategorylength > 0)
 	{
-	  //var CategoryWhereString  = ' AND  IMCIMCCatgy.SysFk_CatgyMstr_InvtyCatCatgy =  "' + enteredCategory +'"';
-	  var CategoryWhereString  = ' AND  CATGYMCMIMCIMCCatgy.SysFk_CatgyMstr_InvtyCatCatgy =  "' + enteredCategory +'"';
+	  var CategoryWhereString  = ' AND  IMCIMCCatgy.SysFk_CatgyMstr_InvtyCatCatgy =  "' + enteredCategory +'"';
 	}
 	else
 	{
@@ -1688,24 +1447,12 @@ function queryForSearch(tx)
 	}
 		
 	
-	
 
-    //works//var finalqueryString = 'SELECT IMC.* , IMCCatgy.* FROM INVENTORY_MASTER_CATALOGUE AS IMC LEFT JOIN INVENTORY_MASTER_CATALOGUE_CATEGORY AS IMCCatgy ON IMC.SysPk_InvtyCat=IMCCatgy.SysFk_InvtyCat_InvtyCatCatgy  WHERE'+ barcodeWhereString + promonameWhereString + fulldescriptionWhereString + brandWhereString + CategoryWhereString +' GROUP BY IMC.SysPk_InvtyCat';
-   //works//var finalqueryString = 'SELECT IMCCatgy.*,CM.* FROM CATALOGUE_MASTER AS CM  INNER JOIN(SELECT IMC.* , IMCCatgy.* FROM INVENTORY_MASTER_CATALOGUE AS IMC LEFT JOIN INVENTORY_MASTER_CATALOGUE_CATEGORY AS IMCCatgy ON IMC.SysPk_InvtyCat=IMCCatgy.SysFk_InvtyCat_InvtyCatCatgy)AS IMCCatgy ON IMCCatgy.SysFk_CatMstr_InvtyCat = CM.SysPk_CatMstr';
-    //works//var finalqueryString = 'SELECT IMCIMCCatgy.*,CM.* FROM CATALOGUE_MASTER AS CM  INNER JOIN(SELECT IMC.* , IMCCatgy.* FROM INVENTORY_MASTER_CATALOGUE AS IMC LEFT JOIN INVENTORY_MASTER_CATALOGUE_CATEGORY AS IMCCatgy ON IMC.SysPk_InvtyCat=IMCCatgy.SysFk_InvtyCat_InvtyCatCatgy  WHERE'+ barcodeWhereString + promonameWhereString + fulldescriptionWhereString + brandWhereString + CategoryWhereString +' GROUP BY IMC.SysPk_InvtyCat)AS IMCIMCCatgy ON IMCIMCCatgy.SysFk_CatMstr_InvtyCat = CM.SysPk_CatMstr ';
-    //WORKS - without category master table// var finalqueryString = 'SELECT IMCIMCCatgy.*,CM.* FROM CATALOGUE_MASTER AS CM  INNER JOIN(SELECT IMC.* , IMCCatgy.* FROM INVENTORY_MASTER_CATALOGUE AS IMC LEFT JOIN INVENTORY_MASTER_CATALOGUE_CATEGORY AS IMCCatgy ON IMC.SysPk_InvtyCat=IMCCatgy.SysFk_InvtyCat_InvtyCatCatgy)AS IMCIMCCatgy ON IMCIMCCatgy.SysFk_CatMstr_InvtyCat = CM.SysPk_CatMstr  WHERE'+ barcodeWhereString + promonameWhereString + fulldescriptionWhereString + brandWhereString + CatalogueWhereString + CategoryWhereString +' GROUP BY IMCIMCCatgy.SysPk_InvtyCat';
-    //works- but needs to be left join//var finalqueryString = 'SELECT CatgyM.*, CMIMCIMCCatgy.* FROM CATEGORY_MASTER AS CatgyM INNER JOIN(SELECT IMCIMCCatgy.*,CM.* FROM CATALOGUE_MASTER AS CM  INNER JOIN(SELECT IMC.* , IMCCatgy.* FROM INVENTORY_MASTER_CATALOGUE AS IMC LEFT JOIN INVENTORY_MASTER_CATALOGUE_CATEGORY AS IMCCatgy ON IMC.SysPk_InvtyCat=IMCCatgy.SysFk_InvtyCat_InvtyCatCatgy)AS IMCIMCCatgy ON IMCIMCCatgy.SysFk_CatMstr_InvtyCat = CM.SysPk_CatMstr  WHERE'+ barcodeWhereString + promonameWhereString + fulldescriptionWhereString + brandWhereString + CatalogueWhereString + CategoryWhereString +' GROUP BY IMCIMCCatgy.SysPk_InvtyCat)AS CMIMCIMCCatgy ON CatgyM.SysPk_CatgyMstr = CMIMCIMCCatgy.SysFk_CatgyMstr_InvtyCatCatgy';
-   
-    
-    //works-this one will be fine too.. it doesn't have attributes table joined with it.
-    //var finalqueryString = 'SELECT CatgyM.*, CMIMCIMCCatgy.* FROM(SELECT IMCIMCCatgy.*,CM.* FROM CATALOGUE_MASTER AS CM  INNER JOIN(SELECT IMC.* , IMCCatgy.* FROM INVENTORY_MASTER_CATALOGUE AS IMC LEFT JOIN INVENTORY_MASTER_CATALOGUE_CATEGORY AS IMCCatgy ON IMC.SysPk_InvtyCat=IMCCatgy.SysFk_InvtyCat_InvtyCatCatgy)AS IMCIMCCatgy ON IMCIMCCatgy.SysFk_CatMstr_InvtyCat = CM.SysPk_CatMstr  WHERE'+ barcodeWhereString + promonameWhereString + fulldescriptionWhereString + brandWhereString + CatalogueWhereString + CategoryWhereString +' GROUP BY IMCIMCCatgy.SysPk_InvtyCat)AS CMIMCIMCCatgy LEFT JOIN CATEGORY_MASTER AS CatgyM ON CatgyM.SysPk_CatgyMstr = CMIMCIMCCatgy.SysFk_CatgyMstr_InvtyCatCatgy';
-    
-    
-    //works - this has attributes table joined with it but is currently useless. It can be used in the future to search by attribute. i think.
-    var finalqueryString = 'SELECT IMCATTR.* , CATGYMCMIMCIMCCatgy.* FROM ( SELECT CatgyM.*, CMIMCIMCCatgy.* FROM ( SELECT IMCIMCCatgy.*,CM.* FROM CATALOGUE_MASTER AS CM INNER JOIN ( SELECT IMC.* , IMCCatgy.* FROM INVENTORY_MASTER_CATALOGUE AS IMC LEFT JOIN INVENTORY_MASTER_CATALOGUE_CATEGORY AS IMCCatgy ON IMC.SysPk_InvtyCat=IMCCatgy.SysFk_InvtyCat_InvtyCatCatgy ) AS IMCIMCCatgy ON IMCIMCCatgy.SysFk_CatMstr_InvtyCat = CM.SysPk_CatMstr GROUP BY IMCIMCCatgy.SysPk_InvtyCat ) AS CMIMCIMCCatgy LEFT JOIN CATEGORY_MASTER AS CatgyM ON CatgyM.SysPk_CatgyMstr = CMIMCIMCCatgy.SysFk_CatgyMstr_InvtyCatCatgy )AS CATGYMCMIMCIMCCatgy LEFT JOIN INVENTORY_MASTER_CATALOGUE_ATTRIBUTES AS IMCATTR ON SysFk_InvtyCat_InvtyCatAttr = CATGYMCMIMCIMCCatgy.SysPk_InvtyCat  WHERE'+ barcodeWhereString + promonameWhereString + fulldescriptionWhereString + brandWhereString + CatalogueWhereString + CategoryWhereString +'GROUP BY CATGYMCMIMCIMCCatgy.SysPk_InvtyCat';
+    //works
+   var finalqueryString = 'SELECT CatgyM.*, CMIMCIMCCatgy.* FROM(SELECT IMCIMCCatgy.*,CM.* FROM CATALOGUE_MASTER AS CM  INNER JOIN(SELECT IMC.* , IMCCatgy.* FROM INVENTORY_MASTER_CATALOGUE AS IMC LEFT JOIN INVENTORY_MASTER_CATALOGUE_CATEGORY AS IMCCatgy ON IMC.SysPk_InvtyCat=IMCCatgy.SysFk_InvtyCat_InvtyCatCatgy)AS IMCIMCCatgy ON IMCIMCCatgy.SysFk_CatMstr_InvtyCat = CM.SysPk_CatMstr  WHERE'+ barcodeWhereString + promonameWhereString + fulldescriptionWhereString + brandWhereString + CatalogueWhereString + CategoryWhereString +' GROUP BY IMCIMCCatgy.SysPk_InvtyCat)AS CMIMCIMCCatgy LEFT JOIN CATEGORY_MASTER AS CatgyM ON CatgyM.SysPk_CatgyMstr = CMIMCIMCCatgy.SysFk_CatgyMstr_InvtyCatCatgy';
 
 
-	
+ 
 	
 	finalqueryString = checkForWhereAnd(finalqueryString);
     
@@ -1869,8 +1616,7 @@ function renderCartList(tx,results)
 	var validQuantityArr = [];
 	var validsubtotalArr = [];
 	var validorderedFromArr = [];
-    var validtextureArr = [];
-    var validsizeArr = [];
+  
 	
 	
     //removing last comma from end of locaStorage.
@@ -1888,12 +1634,8 @@ function renderCartList(tx,results)
 	var quantityForArr = localStorage.quantity.replace(/,\s*$/,'');
 	var subtotalForArr = localStorage.subtotal.replace(/,\s*$/,'');
 	var orderedFromArr = localStorage.orderedfrom.replace(/,\s*$/,'');
-    var textureFromArr = localStorage.texture.replace(/,\s*$/,'');
-    var sizeFromArr = localStorage.size.replace(/,\s*$/,'');
-	
-    var textureChoicesForArr = localStorage.texturechoicesFOREDITPAGE.replace(/,\s*$/,'');
-    var sizeChoicesForArr = localStorage.sizechoicesFOREDITPAGE.replace(/,\s*$/,'');
-    
+
+   
 	
 	/*turn strings seperated by commas into array*/
     cartSKUArr = SKUForArr.split(',');
@@ -1909,15 +1651,7 @@ function renderCartList(tx,results)
 	cartQuantityArr =  quantityForArr.split(',');
 	cartsubtotalArr = subtotalForArr.split(',');
 	cartorderedFromArr = orderedFromArr.split(',');
-    carttextureFromArr = textureFromArr.split(',');
-    cartsizeFromArr = sizeFromArr.split(',');
-    
-    carttexturechoicesArr = textureChoicesForArr.split(',');
-    cartsizechoicesArr = sizeChoicesForArr.split(',');
-    
-	
-	
-		
+
     
     var cartLength = cartbarcodeArr.length;
     var htmlstringcart = '';
@@ -1961,7 +1695,7 @@ function renderCartList(tx,results)
 				toNormalString(cartcataloguetitleArr[ind]);
 				htmlstringcart +='<b>Catalogue :</b><span>'+returnedNormal+'</span></p>';
                 
-                //no need to display texture,size here.
+            
 				
 				htmlstringcart += '</div><div class="col-md-1 col-sm-1 col-xs-1"><a href="#" class="edit-order" data-orderid="'+ ind +'">edit</a></div></div></div><div class="col-md-12 col-sm-12 col-xs-12"><p class="pull-left">quantity: <span>'+cartQuantityArr[ind]+'</span></p><p class="pull-right">$<span>'+ cartsubtotalArr[ind] +'</span></p></div></div>' ;
 
@@ -1982,8 +1716,7 @@ function renderCartList(tx,results)
 				validQuantityArr.push(cartQuantityArr[ind]);
 				validsubtotalArr.push(cartsubtotalArr[ind]);
 				validorderedFromArr.push(cartorderedFromArr[ind]);
-                validtextureArr.push(carttextureFromArr[ind]);
-                validsizeArr.push(cartsizeFromArr[ind]);
+
 
 
 
@@ -2037,7 +1770,7 @@ function renderCartList(tx,results)
         
         //alert('varlidORDERIDS : ' + varlidORDERIDS.toString());
         
-		$('.orderAll-cont').append('<a href="#" class="btn btn-success btn-large orderAll" data-orderid="'+varlidORDERIDS.toString()+'" data-sku="'+ validSKUArr.toString() +'" data-picturefilename="'+ validpicturefilenameArr.toString() +'" data-barcode="'+validbarcodeArr.toString()+'" data-brand="'+validbrandArr.toString()+'" data-fulldescription="'+ validfulldescriptionArr.toString() +'"  data-cataloguetitle="'+ validcataloguetitleArr.toString() +'" data-promoname="' + validpromonameArr.toString() +'"  data-promoPrice="'+ validpromoPriceArr.toString()+'" data-promoEndDate="'+validpromoEndDateArr.toString()+'" data-promoStartDate="'+validpromoStartDateArr.toString()+'"  data-quantity= "'+validQuantityArr.toString() +'"  data-subtotal="'+ validsubtotalArr.toString()+'" data-orderedfrom="'+validorderedFromArr.toString()+'" data-texture="'+validtextureArr.toString()+'" data-size="'+validsizeArr.toString()+'">Order All</a>');
+		$('.orderAll-cont').append('<a href="#" class="btn btn-success btn-large orderAll" data-orderid="'+varlidORDERIDS.toString()+'" data-sku="'+ validSKUArr.toString() +'" data-picturefilename="'+ validpicturefilenameArr.toString() +'" data-barcode="'+validbarcodeArr.toString()+'" data-brand="'+validbrandArr.toString()+'" data-fulldescription="'+ validfulldescriptionArr.toString() +'"  data-cataloguetitle="'+ validcataloguetitleArr.toString() +'" data-promoname="' + validpromonameArr.toString() +'"  data-promoPrice="'+ validpromoPriceArr.toString()+'" data-promoEndDate="'+validpromoEndDateArr.toString()+'" data-promoStartDate="'+validpromoStartDateArr.toString()+'"  data-quantity= "'+validQuantityArr.toString() +'"  data-subtotal="'+ validsubtotalArr.toString()+'" data-orderedfrom="'+validorderedFromArr.toString()+'">Order All</a>');
    
 		
 	
@@ -2053,40 +1786,25 @@ function renderCartList(tx,results)
     
     $('body').off('click','.orderAll').on('click','.orderAll' , function()
     {
-    //  alert($(this).attr('data-sku'));
-    // alert($(this).attr('data-picturefilename'));
-    //     alert($(this).attr('data-barcode'));
-    //    alert($(this).attr('data-brand'));
-    //    alert($(this).attr('data-fulldescription'));
-    //     alert($(this).attr('data-cataloguetitle'));
-    //     alert($(this).attr('data-promoname'));
-    //      alert($(this).attr('data-promoPrice'));
-    //      alert($(this).attr('data-promoEndDate'));
-    //      alert($(this).attr('data-promoStartDate'));
-    //      alert($(this).attr('data-quantity'));
-    //      alert($(this).attr('data-subtotal'));
-    //      alert('ordered from: ' + $(this).attr('data-orderedfrom'));
-    //      alert($(this).attr('data-texture'));
-    //      alert($(this).attr('data-size'));
+        alert($(this).attr('data-sku'));
+        alert($(this).attr('data-picturefilename'));
+        alert($(this).attr('data-barcode'));
+        alert($(this).attr('data-brand'));
+        alert($(this).attr('data-fulldescription'));
+        alert($(this).attr('data-cataloguetitle'));
+        alert($(this).attr('data-promoname'));
+        alert($(this).attr('data-promoPrice'));
+        alert($(this).attr('data-promoEndDate'));
+        alert($(this).attr('data-promoStartDate'));
+        alert($(this).attr('data-quantity'));
+        alert($(this).attr('data-subtotal'));
+        alert('ordered from: ' + $(this).attr('data-orderedfrom'));
 
-    //     alert('TOTAL:' + orderAllTotal);
+
+        alert('TOTAL:' + orderAllTotal);
 
         
-     /*
-        ref = window.open('http://viveg.net/dummyprestashop/index.php?orderid='+$(this).attr('data-orderid')+'&sku='+$(this).attr('data-sku')+'&barcode='+$(this).attr('data-barcode')+'&promoprice='+$(this).attr('data-promoPrice')+'&quantity='+$(this).attr('data-quantity')+'&orderedfrom='+$(this).attr('data-orderedfrom')+'&texture='+$(this).attr('data-texture')+'&size='+$(this).attr('data-size')+'&mobiletime='+getDateTimeNow(), '_blank', 'location=yes');
-    */
-        
-      //  http://viveg.net/index.php?orderid=1%2C2&sku=123%2C321&barcode=4434244%2C43331&promoprice=88.00%2C99.75&quantity=32%2C1&orderedfrom=search%2Ccatalogue&texture=img%2Ftexture1.jpg%2Cimg%2Ftexture2.jpg&size=s%2Cm&mobiletime=2015-05-11%2010%3A22%3A22&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c
-        
-        
-       // ref = window.open('http://viveg.net/index.php?orderid='+$(this).attr('data-orderid')+'&sku='+$(this).attr('data-sku')+'&barcode='+$(this).attr('data-barcode')+'&promoprice='+$(this).attr('data-promoPrice')+'&quantity='+$(this).attr('data-quantity')+'&orderedfrom='+$(this).attr('data-orderedfrom')+'&texture='+$(this).attr('data-texture')+'&size='+$(this).attr('data-size')+'&mobiletime='+getDateTimeNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c', '_blank', 'location=yes');
-       
-     //   http://viveg.net/index.php?barcode=4434244%2C43331&quantity=4%2C4&email=useremail%40gmail.com&mobile=09999999999&localmobiledate=yyyy-mm-dd&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c
-        
-        
-        //l.facebook.com/l.php?u=http%3A%2F%2Fviveg.net%2Findex.php%3Fbarcode%3D4434244%252C43331%26quantity%3D4%252C4%26email%3Duseremail%2540gmail.com%26mobile%3D09999999999%26viveg-app-access%3D76ef0d45220fdee3ac883a0c7565e50c&h=4AQGzqAXX
-        
-        
+    
 
 
         alert('http://viveg.net/index.php?barcode='+$(this).attr('data-barcode')+'&quantity='+$(this).attr('data-quantity')+'&email=useremail@gmail.com'+'&mobile=09999999999'+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c');
@@ -2201,11 +1919,7 @@ function removeitems(itemindex,numberOfItemsThatNeedsToBeRemoved)
                     cartQuantityArr[itemindex] = null;
                     cartsubtotalArr[itemindex] = null;
                     cartorderedFromArr[itemindex] = null;
-                    carttextureFromArr[itemindex] = null;
-                    cartsizeFromArr[itemindex] = null;
-                    carttexturechoicesArr[itemindex] = null;
-                    cartsizechoicesArr[itemindex] = null;
-                    
+
 
 
         numberOfItemsRemovedSofar+= 1;
@@ -2246,10 +1960,7 @@ function updatelocalStorageAfterSplicing()
         cartQuantityArr= jQuery.grep(cartQuantityArr, function(n, i){return (n !== "" && n != null); });
         cartsubtotalArr= jQuery.grep(cartsubtotalArr, function(n, i){return (n !== "" && n != null); });
         cartorderedFromArr= jQuery.grep(cartorderedFromArr, function(n, i){return (n !== "" && n != null); });
-        carttextureFromArr= jQuery.grep(carttextureFromArr, function(n, i){return (n !== "" && n != null); });
-        cartsizeFromArr= jQuery.grep(cartsizeFromArr, function(n, i){return (n !== "" && n != null); });
-        carttexturechoicesArr= jQuery.grep(carttexturechoicesArr, function(n, i){return (n !== "" && n != null); });
-        cartsizechoicesArr= jQuery.grep(cartsizechoicesArr, function(n, i){return (n !== "" && n != null); });
+     
 
     
     
@@ -2272,10 +1983,7 @@ function updatelocalStorageAfterSplicing()
                         var newarrstring_cartQuantity = cartQuantityArr.toString()+",";
                         var newarrstring_cartsubtotal = cartsubtotalArr.toString()+",";
                         var newarrstring_cartorderedFrom = cartorderedFromArr.toString()+",";
-                        var newarrstirng_carttexture = carttextureFromArr.toString()+",";     
-                        var newarrstirng_cartsize = cartsizeFromArr.toString()+",";
-                        var newarrstirng_carttexturechoices =  carttexturechoicesArr+",";
-                        var newarrstirng_cartsizechoices = cartsizechoicesArr+",";
+                       
                         
                        
 
@@ -2300,10 +2008,7 @@ function updatelocalStorageAfterSplicing()
                         var newarrstring_cartQuantity = '';
                         var newarrstring_cartsubtotal = '';
                         var newarrstring_cartorderedFrom = '';
-                        var newarrstirng_carttexture = '';
-                        var newarrstirng_cartsize = '';
-                        var newarrstirng_carttexturechoices =  '';
-                        var newarrstirng_cartsizechoices = '';
+        
                     }
                
     
@@ -2324,10 +2029,7 @@ function updatelocalStorageAfterSplicing()
                     localStorage.quantity = newarrstring_cartQuantity;
                     localStorage.subtotal = newarrstring_cartsubtotal;
                     localStorage.orderedfrom = newarrstring_cartorderedFrom;
-                    localStorage.texture  = newarrstirng_carttexture;
-                    localStorage.size = newarrstirng_cartsize;
-                    localStorage.texturechoicesFOREDITPAGE = newarrstirng_carttexturechoices;
-                    localStorage.sizechoicesFOREDITPAGE =newarrstirng_cartsizechoices;
+
 }
 /*----------------------------------------------------------------------*/
 /*-------------------//navClickedListener.js-------------------------------*/
@@ -2344,12 +2046,8 @@ function queryItemDetails(tx,idForSinglePage)
 
 //tx.executeSql('SELECT IMC.*,CM.* FROM INVENTORY_MASTER_CATALOGUE AS IMC INNER JOIN CATALOGUE_MASTER AS CM ON IMC.SysFk_CatMstr_InvtyCat = CM.SysPk_CatMstr  WHERE IMC.RowNumber_InvtyCat=' + idForSinglePage , [], renderSinglePage, errorCB);  
 
-//tx.executeSql('SELECT CatgyM.*, CMIMCIMCCatgy.* FROM(SELECT IMCIMCCatgy.*,CM.* FROM CATALOGUE_MASTER AS CM  INNER JOIN(SELECT IMC.* , IMCCatgy.* FROM INVENTORY_MASTER_CATALOGUE AS IMC LEFT JOIN INVENTORY_MASTER_CATALOGUE_CATEGORY AS IMCCatgy ON IMC.SysPk_InvtyCat=IMCCatgy.SysFk_InvtyCat_InvtyCatCatgy)AS IMCIMCCatgy ON IMCIMCCatgy.SysFk_CatMstr_InvtyCat = CM.SysPk_CatMstr)AS CMIMCIMCCatgy LEFT JOIN CATEGORY_MASTER AS CatgyM ON CatgyM.SysPk_CatgyMstr = CMIMCIMCCatgy.SysFk_CatgyMstr_InvtyCatCatgy   WHERE CMIMCIMCCatgy.SysPk_InvtyCat= ?' , [idForSinglePage], renderSinglePage, errorCB);  
+tx.executeSql('SELECT CatgyM.*, CMIMCIMCCatgy.* FROM(SELECT IMCIMCCatgy.*,CM.* FROM CATALOGUE_MASTER AS CM  INNER JOIN(SELECT IMC.* , IMCCatgy.* FROM INVENTORY_MASTER_CATALOGUE AS IMC LEFT JOIN INVENTORY_MASTER_CATALOGUE_CATEGORY AS IMCCatgy ON IMC.SysPk_InvtyCat=IMCCatgy.SysFk_InvtyCat_InvtyCatCatgy)AS IMCIMCCatgy ON IMCIMCCatgy.SysFk_CatMstr_InvtyCat = CM.SysPk_CatMstr)AS CMIMCIMCCatgy LEFT JOIN CATEGORY_MASTER AS CatgyM ON CatgyM.SysPk_CatgyMstr = CMIMCIMCCatgy.SysFk_CatgyMstr_InvtyCatCatgy   WHERE CMIMCIMCCatgy.SysPk_InvtyCat= ?' , [idForSinglePage], renderSinglePage, errorCB);  
 
-	
-
-var sqlSinglePage = ' SELECT IMCATTR.* , CATGYMCMIMCIMCCatgy.* FROM ( SELECT CatgyM . * , CMIMCIMCCatgy . * FROM ( SELECT IMCIMCCatgy . * , CM . * FROM CATALOGUE_MASTER AS CM INNER JOIN ( SELECT IMC . * , IMCCatgy . * FROM INVENTORY_MASTER_CATALOGUE AS IMC LEFT JOIN INVENTORY_MASTER_CATALOGUE_CATEGORY AS IMCCatgy ON IMC.SysPk_InvtyCat = IMCCatgy.SysFk_InvtyCat_InvtyCatCatgy ) AS IMCIMCCatgy ON IMCIMCCatgy.SysFk_CatMstr_InvtyCat = CM.SysPk_CatMstr ) AS CMIMCIMCCatgy LEFT JOIN CATEGORY_MASTER AS CatgyM ON CatgyM.SysPk_CatgyMstr = CMIMCIMCCatgy.SysFk_CatgyMstr_InvtyCatCatgy )AS CATGYMCMIMCIMCCatgy LEFT JOIN INVENTORY_MASTER_CATALOGUE_ATTRIBUTES AS IMCATTR ON SysFk_InvtyCat_InvtyCatAttr = CATGYMCMIMCIMCCatgy.SysPk_InvtyCat WHERE CATGYMCMIMCIMCCatgy.SysPk_InvtyCat = ? ';
-tx.executeSql(sqlSinglePage, [idForSinglePage], renderSinglePage, errorCB);  
 
     
     
@@ -2384,131 +2082,18 @@ function renderSinglePage(tx,results)
 			
             
 
-            var usedtextures = [];
-            var usedsizes = [];
-            var displayonetextureonce = 0;
-        var texturechecked = '';//check first item by default
-       for(var ind=0; ind < results.rows.length ; ind++ )//for loop for displaying color selection and checking which sizes are applicable for the item
-       {
-           if(ind == 0) {texturechecked = 'checked'; }else {texturechecked =''; }
-           
-          
-           if(results.rows.item(ind).texture != 'one_texture' && results.rows.item(ind).texture != null)
-           {
-               $('.singleitemtexturefieldscont').append('<input type="radio" name="singleitemtexture" value="'+results.rows.item(ind).texture+'" class="img-radio" id="texture-'+ind+'" '+texturechecked+'/><label for="texture-'+ind+'"><div style="background-image:url(\''+results.rows.item(ind).texture+'\'); background-size: 60px 60px; display:block; width:50px; height:50px; border-radius: 5px; margin-left: 20px;"></div></label>' );
-               
-              usedtextures.push(results.rows.item(ind).texture);
-               
-           }
-           else
-           {//when item is assigned one_texture or is not in attributes table, it will send given one_texture for name="singleitmetexture" by default.
-               
-                usedtextures = [];
-                usedtextures.push('one_texture');
-               
-                $('.singleitemtexturefieldscont').empty();//remove the rest of the radio buttons. just incase.
-               
-               if(displayonetextureonce == 0)
-               {
-                   $('.singleitemtexturefieldscont').append('<input type="radio" name="singleitemtexture" value="one_texture" id="texture-'+ind+'" checked/><label for="texture-'+ind+'">one_texture</label>' );
-               }
-               
-                $('.singleitemtexturetr').hide();
-               
-               displayonetextureonce ++;
-               
-           }
-           
-           
-           
-           
-           if(results.rows.item(ind).one_size == -1 && results.rows.item(ind).one_size != null)// -1 means field is not applicable to product. if one_size is used then, item comes in one size only and the rest of the sizes are not used.//null means it is not in the table. because the default value in the table is one_size
-           {
-               
-               if(results.rows.item(ind).xs >= 0)//0 means out of stock but it will still be displayed.
-               {
-                    usedsizes.push('xs');
-               }
-               
-               if(results.rows.item(ind).s >= 0)
-               {
-                   usedsizes.push('s');
-               }  
-               
-               if(results.rows.item(ind).m >= 0)
-               {
-                   usedsizes.push('m');
-               }
-               
-               if(results.rows.item(ind).l >= 0)
-               {
-                   usedsizes.push('l');
-               }
-               
-               if(results.rows.item(ind).xl >= 0)
-               {
-                   usedsizes.push('xl');
-               }
-               
-               
-               
-           }
-           else
-           {
-              usedsizes.push('one_size');
-           }
-           
-       }
-            
-            
-            
-        
-     
-      
-        var uniqueusedtextures = $.unique(usedtextures);
-        var uniqueusedsizes = $.unique(usedsizes);
-            
-        var sizechecked ='';
-    
-        
-//alert('unique used textures: ' + uniqueusedtextures);    
-    //   alert('unique used sizes: ' + uniqueusedsizes);   
-               
-        toCustomString(uniqueusedtextures.toString());
-        texturechoicesStr = returnedCustom;
-            
-        toCustomString(uniqueusedsizes.toString());
-        sizechoicesStr = returnedCustom;
-            
-        
-            
-//alert('to custom string uniqueusedtextures ' + texturechoicesStr);
-          //  alert('to custom string uniqueusedsizes ' +  sizechoicesStr);
-            
-            
-            
-            
-            
-            
-        for(var x=0;x < uniqueusedsizes.length;x++)
-        {
-            
-           if(x==0){sizechecked = 'checked';}else{sizechecked = '';} 
-      
 
-            if(uniqueusedsizes[x] != 'one_size')
-            {
-                $('.singleitemsizefieldscont').append('<input type="radio" name="singleitemsize" value="'+uniqueusedsizes[x]+'" id="size-'+uniqueusedsizes[x]+'" '+sizechecked+'/><label for="size-'+uniqueusedsizes[x]+'">'+uniqueusedsizes[x]+'</label> &nbsp; &nbsp;' );
-            }
-            else
-            {
-                $('.singleitemsizefieldscont').empty();
-                 $('.singleitemsizefieldscont').append('<input type="radio" name="singleitemsize" value="'+uniqueusedsizes[x]+'" id="size-'+uniqueusedsizes[x]+'" checked/><label for="size-'+uniqueusedsizes[x]+'">'+uniqueusedsizes[x]+'</label> &nbsp; &nbsp;' );
-                $('.singleitemsizetr').hide();
-            }
+           
+           
+           
+           
+
             
-        }
- 
+            
+        
+
+            
+
             
             
             
@@ -2683,15 +2268,10 @@ $(document).on('click','.placeOrder', function()
     var quantity = $(this).attr('data-quantity');
     var subtotal = $(this).attr('data-subtotal');
     var orderedFrom = $(this).attr('data-orderedfrom');
-    var texture = $('input[name="singleitemtexture"]:checked').val();//no need to toCustomString since you can't have , or " for filenames anyways.
-    var size = $('input[name="singleitemsize"]:checked').val();//There probably won't be a size with , or "
-    
-    
+   
 
     
-//alert(texture + ' ' + size);
-  //  alert(texturechoicesStr + ' ' + sizechoicesStr);
-	
+
     //this prevents commas from promonames from being interpreted as , when localstorage string is turned into an array
 		//SKU = toCustomString(SKU.toString());
 		// picturefilename = toCustomString(picturefilename.toString());
@@ -2734,18 +2314,8 @@ $(document).on('click','.placeOrder', function()
     localStorage.subtotal += subtotal.toString()+',';
 	localStorage.orderedfrom += orderedFrom.toString()+',';
     
-    localStorage.texture += texture.toString() + ',';
-    localStorage.size += size.toString() + ',';
-    
-    
-    
-    localStorage.texturechoicesFOREDITPAGE += texturechoicesStr.toString() + ',';
-    localStorage.sizechoicesFOREDITPAGE += sizechoicesStr.toString() + ',';
-    
-    
-//    alert(localStorage.texturechoicesFOREDITPAGE);
-//    alert(localStorage.sizechoicesFOREDITPAGE);
-    
+
+
     
     alert('item added to cart');
     
