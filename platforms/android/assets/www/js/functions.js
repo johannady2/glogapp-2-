@@ -4,8 +4,9 @@
 var networkstatus = '';
 //var isOffline = 'onLine' in navigator && !navigator.onLine;
 var ref;
+var bodyloadcounter = 1;
 function onBodyLoad()
-{
+{   bodyloadcounter+= 1;
   
     document.addEventListener("offline", onDeviceOffline, false);
     document.addEventListener("online", onDeviceOnline, false);
@@ -26,6 +27,8 @@ var db;
 var idForSinglePage;//uses primary key to open singlepage
 var scanResult;//the barcode you get from scanning
 var orderidtoedit;//index of cart item. for editorder page.
+var deviceOlineCounter = 1;//when odd, will localtion.reload
+
 
 var globalorderFromSwitch;//switch for catalogue or search because they use the same query
 var globalorderedFrom;//when single page is opened.
@@ -152,24 +155,69 @@ var varlidORDERIDS = [];//set back to zero whenever rendercartlist
                     //--//INVENTORY_MASTER_CATALOGUE_CATEGORY
 
 
-
-
-          
-
-
-
 	//------------//FOR API
 
 /*~~~~~~~~~~~~~~~~~~~~//GLOBAL VARIABLES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 
-function onDeviceOnline()
+function errorCB(err)
 {
- 
+    alert("Error processing SQL: " + err.message);
+   
+}
+
+function successCB()
+{
+//  alert('successful');
+
+}
+
+
+
+function initializeDB()
+{
+     db = window.openDatabase("Database","1.0","Cordova Demo", 4*1024*1024);
+     db.transaction(createTBinventorymastercatalogue, errorCB, successCB);
+}
+
+
+function onDeviceOffline()
+{
+    if(bodyloadcounter == 1)//ifbodyloadcounter is 1 when ondeviceoffline.. AKA. when deviceisoffline when app starts
+    {
+        deviceOlineCounter+= 1; 
+    }
+    
+    initializeDB();
+    $('.noti-online').hide();//incase a noti-online has not beed closed yet.
+   $('.noti-offline').show();
+    if(networkstatus != 'disconnected' || networkstatus == '')
+    {
+        networkstatus = 'disconnected';
+        alert('networkstatus: '+networkstatus);
+    }
+}
+
+$('.btn-noti-offline').on('click',function()
+{
+    $('.noti-offline').hide();
+    $('.splashscreencont').show();
+});
+
+
+function onDeviceOnline()
+{ deviceOlineCounter+= 1; 
+    if(deviceOlineCounter%2 == 1)
+    {
+        location.reload();
+    }
+        $('.noti-offline').hide();//incase a noti-offline has not beed closed yet.
+        $('.noti-online').show();
+
     if((networkstatus != 'connected' || networkstatus == ''))
     {
         networkstatus = 'connected';//networkstatus is set back to '' when checkig inorder to see results so SysPk_CatgyMstrARR.length <= 0 is added to  prevent from pushing to array twice
-        alert('onDeviceOnline->'+networkstatus);    
+        alert('networkstatus: '+networkstatus);
 
             $.when(
                    $.getJSON('http://viveg.net/glogapitest/index.php?table=INVENTORY_MASTER_CATALOGUE'),
@@ -466,50 +514,15 @@ function onDeviceOnline()
 }
 
 
-
-
-
-
-
-
-
-
-
-
-function errorCB(err)
+$('.btn-noti-online').on('click',function()
 {
-    alert("Error processing SQL: " + err.message);
-   
-}
+    
+    $('.noti-online').hide();
+    $('.splashscreencont').show();
+    
 
-function successCB()
-{
-//  alert('successful');
-
-}
-
-
-
-function initializeDB()
-{
-    alert('initializeDB');
-     db = window.openDatabase("Database","1.0","Cordova Demo", 4*1024*1024);
-     db.transaction(createTBinventorymastercatalogue, errorCB, successCB);
-}
-
-
-function onDeviceOffline()
-{
-    initializeDB();
-
-    if(networkstatus != 'disconnected' || networkstatus == '')
-    {
-        networkstatus = 'disconnected';    
-        alert('onDeviceOffline ->'+ networkstatus);
-    }
-}
-
-
+    
+});
 
 
 

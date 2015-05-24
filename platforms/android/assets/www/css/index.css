@@ -475,6 +475,7 @@ body
 }
 .splashscreencont
 {
+    display:none;
     text-align:center;
 }
 
@@ -647,6 +648,22 @@ video#bgvid{
 	 -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;*/
+}
+
+
+
+.noti
+{
+  background-color: rgba(0,0,0,0.8);
+  width: 30%;
+  padding: 1%;
+  border-radius: 5px;
+  color: #ffffff;
+
+  z-index: 10000000;
+
+  margin: 174px auto;
+
 }
 
 				/*Masonry Stuff*/
