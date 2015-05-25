@@ -1794,21 +1794,27 @@ function renderCartList(tx,results)
 	
     
     if(networkstatus =='disconnected')
-    {       $('.orderAll-cont').empty(); 
-     
+    {
+        $('.orderAll-cont').empty(); 
+
         $('.orderAll-cont').append('<a href="#" class="btn btn-default btn-large orderAllDisabledLook">Order All</a>');
-          $('.orderAll-cont').append('<small class="orderAllAreaNote">You must be online inorder to checkout.</small>');
+        $('.orderAll-cont').append('<small class="orderAllAreaNote">You must be online inorder to checkout.</small>');
+    }
+    else if(orderAllTotal == 0)
+    {
+        $('.orderAll-cont').empty(); 
+
+        $('.orderAll-cont').append('<a href="#" class="btn btn-default btn-large orderAllDisabledLook">Order All</a>');
+        $('.orderAll-cont').append('<small class="orderAllAreaNote">There is nothing to check out.</small>');
     }
     else
     {
-         $('.orderAll-cont').empty(); 
+        $('.orderAll-cont').empty(); 
     
         $('.orderAll-cont').append('<a href="#" class="btn btn-success btn-large orderAll" data-orderid="'+varlidORDERIDS.toString()+'" data-sku="'+ validSKUArr.toString() +'" data-picturefilename="'+ validpicturefilenameArr.toString() +'" data-barcode="'+validbarcodeArr.toString()+'" data-brand="'+validbrandArr.toString()+'" data-fulldescription="'+ validfulldescriptionArr.toString() +'"  data-cataloguetitle="'+ validcataloguetitleArr.toString() +'" data-promoname="' + validpromonameArr.toString() +'"  data-promoPrice="'+ validpromoPriceArr.toString()+'" data-promoEndDate="'+validpromoEndDateArr.toString()+'" data-promoStartDate="'+validpromoStartDateArr.toString()+'"  data-quantity= "'+validQuantityArr.toString() +'"  data-subtotal="'+ validsubtotalArr.toString()+'" data-orderedfrom="'+validorderedFromArr.toString()+'">Order All</a>');
    
-		
-	
-        //commas are not using toNormal so that string won't be interpreted as different array indexes.
-        if((orderAllTotal >= results.rows.item(0).MinimumPrice_Settings))
+
+        if(orderAllTotal >= results.rows.item(0).MinimumPrice_Settings)
         {
 
             $('.orderAll-cont').append('<br><small class="orderAllAreaNote">Total: P'+ orderAllTotal +'<br>-You get free shipping for purchasing atleast P'+ results.rows.item(0).MinimumPrice_Settings+'.</small>');
@@ -1825,30 +1831,41 @@ function renderCartList(tx,results)
     
     $('body').off('click','.orderAll').on('click','.orderAll' , function()
     {
-        alert($(this).attr('data-sku'));
-        alert($(this).attr('data-picturefilename'));
-        alert($(this).attr('data-barcode'));
-        alert($(this).attr('data-brand'));
-        alert($(this).attr('data-fulldescription'));
-        alert($(this).attr('data-cataloguetitle'));
-        alert($(this).attr('data-promoname'));
-        alert($(this).attr('data-promoPrice'));
-        alert($(this).attr('data-promoEndDate'));
-        alert($(this).attr('data-promoStartDate'));
-        alert($(this).attr('data-quantity'));
-        alert($(this).attr('data-subtotal'));
-        alert('ordered from: ' + $(this).attr('data-orderedfrom'));
-
-
-        alert('TOTAL:' + orderAllTotal);
-
         
+        $('.noti-any , .noti-blanket').show();
+        $('.noti-any').html('<p>This will transfer all valid items in list to the online cart.</p><br><a href="#" class="btn btn-danger orderAllCancel">Cancel</a><a href="#" class="btn btn-success pull-right orderAllAgree">Okay</a><div class="clearfix"></div>');
+    });
+
+    $('body').off('click','.orderAllCancel').on('click','.orderAllCancel', function()
+    {
+         $('.noti-any , .noti-blanket').hide();
+    });
     
-
-
-        alert('http://viveg.net/index.php?barcode='+$(this).attr('data-barcode')+'&quantity='+$(this).attr('data-quantity')+'&email=useremail@gmail.com'+'&mobile=09999999999'+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c');
+     $('body').off('click','.orderAllAgree').on('click','.orderAllAgree' , function()
+     {
+         
+         $('.noti-any , .noti-blanket').hide();
+     
+       /* alert($('.orderAll').attr('data-sku'));
+        alert($('.orderAll').attr('data-picturefilename'));
+        alert($('.orderAll').attr('data-barcode'));
+        alert($('.orderAll').attr('data-brand'));
+        alert($('.orderAll').attr('data-fulldescription'));
+        alert($('.orderAll').attr('data-cataloguetitle'));
+        alert($('.orderAll').attr('data-promoname'));
+        alert($('.orderAll').attr('data-promoPrice'));
+        alert($('.orderAll').attr('data-promoEndDate'));
+        alert($('.orderAll').attr('data-promoStartDate'));
+        alert($('.orderAll').attr('data-quantity'));
+        alert($('.orderAll').attr('data-subtotal'));
+        alert('ordered from: ' + $('.orderAll').attr('data-orderedfrom'));
+        alert('TOTAL:' + orderAllTotal);
+         */
+         
         
-        ref = window.open('http://viveg.net/index.php?barcode='+$(this).attr('data-barcode')+'&quantity='+$(this).attr('data-quantity')+'&email=useremail@gmail.com'+'&mobile=09999999999'+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c', '_blank', 'location=yes');
+        alert('http://viveg.net/index.php?barcode='+$('.orderAll').attr('data-barcode')+'&quantity='+$('.orderAll').attr('data-quantity')+'&email=useremail@gmail.com'+'&mobile=09999999999'+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c');
+        
+        ref = window.open('http://viveg.net/index.php?barcode='+$('.orderAll').attr('data-barcode')+'&quantity='+$('.orderAll').attr('data-quantity')+'&email=useremail@gmail.com'+'&mobile=09999999999'+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c', '_blank', 'location=yes');
     
 
 
@@ -1871,9 +1888,21 @@ function renderCartList(tx,results)
         //waitforresponse(); //but there is still no response api
    
 
+ 
+         
+         
+     });
+        
+
+
 
         
-    });
+
+        
+    
+
+
+        
 	
 
     
