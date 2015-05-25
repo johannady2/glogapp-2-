@@ -115,9 +115,9 @@
         {
             $('.navbar-brand , .navbar-nav > li').not('.foreditorderonly').show();
             $('.forsingleonly , .foreditorderonly').hide();
-            $(".content-cont").load("cart.html",  null, function()
+            $(".content-cont").load("list.html",  null, function()
             {
-                $('.navbar-nav > li > a[href="cart.html"]').click();
+                $('.navbar-nav > li > a[href="list.html"]').click();
             });
    
         });

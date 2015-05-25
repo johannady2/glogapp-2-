@@ -36,7 +36,7 @@ $(document).on('navClicked',function(event,filename)
             startSearch();
        
     }
-    else if(filename == "cart.html")
+    else if(filename == "list.html")
     {
      
         //renderCartList();

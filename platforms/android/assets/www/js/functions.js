@@ -4,10 +4,9 @@
 var networkstatus = '';
 //var isOffline = 'onLine' in navigator && !navigator.onLine;
 var ref;
-var bodyloadcounter = 1;
+
 function onBodyLoad()
-{   bodyloadcounter+= 1;
-  
+{   
     document.addEventListener("offline", onDeviceOffline, false);
     document.addEventListener("online", onDeviceOnline, false);
     
@@ -27,7 +26,6 @@ var db;
 var idForSinglePage;//uses primary key to open singlepage
 var scanResult;//the barcode you get from scanning
 var orderidtoedit;//index of cart item. for editorder page.
-var deviceOlineCounter = 1;//when odd, will localtion.reload
 
 
 var globalorderFromSwitch;//switch for catalogue or search because they use the same query
@@ -67,7 +65,7 @@ if(localStorage.BarcodeInvtyCat == null)
 
 
     
-    /*initialized on placeOrder click*/
+    /*initialized on addToList click*/
     //NOTE: x,y,z,
     //always add "," at the end of array when storing as localStorage
     localStorage.sku = '';
@@ -183,41 +181,47 @@ function initializeDB()
 
 function onDeviceOffline()
 {
-    if(bodyloadcounter == 1)//ifbodyloadcounter is 1 when ondeviceoffline.. AKA. when deviceisoffline when app starts
+    if($('.splashpageindicator').length <= 0)//Only reload when not in splash page.
     {
-        deviceOlineCounter+= 1; 
+        location.reload();
     }
+
     
     initializeDB();
-    $('.noti-online').hide();//incase a noti-online has not beed closed yet.
-   $('.noti-offline').show();
+    
+   
+    $('.noti-online , .splashscreencont').hide();
+    $('.noti-blanket , .noti-offline').show();
     if(networkstatus != 'disconnected' || networkstatus == '')
     {
         networkstatus = 'disconnected';
-        alert('networkstatus: '+networkstatus);
+      
     }
 }
 
 $('.btn-noti-offline').on('click',function()
 {
-    $('.noti-offline').hide();
+    $('.noti-blanket, .noti-offline').hide();
     $('.splashscreencont').show();
 });
 
 
 function onDeviceOnline()
-{ deviceOlineCounter+= 1; 
-    if(deviceOlineCounter%2 == 1)
+{ 
+ 
+    if($('.splashpageindicator').length <= 0)//Only reload when not in splash page.
     {
         location.reload();
     }
-        $('.noti-offline').hide();//incase a noti-offline has not beed closed yet.
-        $('.noti-online').show();
+   
+ 
+  
+    $('.noti-offline, .splashscreencont').hide();
+    $('.noti-blanket , .noti-online').show();
 
     if((networkstatus != 'connected' || networkstatus == ''))
     {
         networkstatus = 'connected';//networkstatus is set back to '' when checkig inorder to see results so SysPk_CatgyMstrARR.length <= 0 is added to  prevent from pushing to array twice
-        alert('networkstatus: '+networkstatus);
 
             $.when(
                    $.getJSON('http://viveg.net/glogapitest/index.php?table=INVENTORY_MASTER_CATALOGUE'),
@@ -517,7 +521,7 @@ function onDeviceOnline()
 $('.btn-noti-online').on('click',function()
 {
     
-    $('.noti-online').hide();
+    $('.noti-blanket, .noti-online').hide();
     $('.splashscreencont').show();
     
 
@@ -1784,29 +1788,40 @@ function renderCartList(tx,results)
     
 
 
-    //commas are not using toNormal so that string won't be interpreted as different array indexes.
-    if((orderAllTotal >= results.rows.item(0).MinimumPrice_Settings))
-    {
+    
 
-		
-		$('.orderAll-cont').empty();
-		//change to validArrs later
-        
-        //alert('varlidORDERIDS : ' + varlidORDERIDS.toString());
-        
-		$('.orderAll-cont').append('<a href="#" class="btn btn-success btn-large orderAll" data-orderid="'+varlidORDERIDS.toString()+'" data-sku="'+ validSKUArr.toString() +'" data-picturefilename="'+ validpicturefilenameArr.toString() +'" data-barcode="'+validbarcodeArr.toString()+'" data-brand="'+validbrandArr.toString()+'" data-fulldescription="'+ validfulldescriptionArr.toString() +'"  data-cataloguetitle="'+ validcataloguetitleArr.toString() +'" data-promoname="' + validpromonameArr.toString() +'"  data-promoPrice="'+ validpromoPriceArr.toString()+'" data-promoEndDate="'+validpromoEndDateArr.toString()+'" data-promoStartDate="'+validpromoStartDateArr.toString()+'"  data-quantity= "'+validQuantityArr.toString() +'"  data-subtotal="'+ validsubtotalArr.toString()+'" data-orderedfrom="'+validorderedFromArr.toString()+'">Order All</a>');
+
+	
+    
+    if(networkstatus =='disconnected')
+    {       $('.orderAll-cont').empty(); 
+     
+        $('.orderAll-cont').append('<a href="#" class="btn btn-default btn-large orderAllDisabledLook">Order All</a>');
+          $('.orderAll-cont').append('<small class="orderAllAreaNote">You must be online inorder to checkout.</small>');
+    }
+    else
+    {
+         $('.orderAll-cont').empty(); 
+    
+        $('.orderAll-cont').append('<a href="#" class="btn btn-success btn-large orderAll" data-orderid="'+varlidORDERIDS.toString()+'" data-sku="'+ validSKUArr.toString() +'" data-picturefilename="'+ validpicturefilenameArr.toString() +'" data-barcode="'+validbarcodeArr.toString()+'" data-brand="'+validbrandArr.toString()+'" data-fulldescription="'+ validfulldescriptionArr.toString() +'"  data-cataloguetitle="'+ validcataloguetitleArr.toString() +'" data-promoname="' + validpromonameArr.toString() +'"  data-promoPrice="'+ validpromoPriceArr.toString()+'" data-promoEndDate="'+validpromoEndDateArr.toString()+'" data-promoStartDate="'+validpromoStartDateArr.toString()+'"  data-quantity= "'+validQuantityArr.toString() +'"  data-subtotal="'+ validsubtotalArr.toString()+'" data-orderedfrom="'+validorderedFromArr.toString()+'">Order All</a>');
    
 		
 	
-	}
-    else
-    {
-		$('.orderAll-cont').empty();
-       $('.orderAll-cont').append('<a href="#" class="btn btn-large orderAllDisabledLook">Order All</a><br><small class="minimumPurchaseNote">-A minimum of P1000 worth of items is required to checkout.</small>');
-    
-		
-	}
-    
+        //commas are not using toNormal so that string won't be interpreted as different array indexes.
+        if((orderAllTotal >= results.rows.item(0).MinimumPrice_Settings))
+        {
+
+            $('.orderAll-cont').append('<br><small class="orderAllAreaNote">Total: P'+ orderAllTotal +'<br>-You get free shipping for purchasing atleast P'+ results.rows.item(0).MinimumPrice_Settings+'.</small>');
+
+        }
+        else
+        {
+
+           $('.orderAll-cont').append('<small class="orderAllAreaNote"><small>Total: P'+ orderAllTotal +'</small><br>-If you reach atleast P'+ results.rows.item(0).MinimumPrice_Settings+' worth of items, you can get free shipping.</small>');
+
+
+        }
+    }
     
     $('body').off('click','.orderAll').on('click','.orderAll' , function()
     {
@@ -1848,7 +1863,7 @@ function renderCartList(tx,results)
         }
         
         /*~~~~~~~~~This area should be erased when using waitforresponse function~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-         $('.navbar-nav > li > a[href="cart.html"]').click();
+         $('.navbar-nav > li > a[href="list.html"]').click();
         /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
         
         
@@ -1922,7 +1937,7 @@ function waitforresponse()
         removeFromCartPlease = [];
         responsecount = 0;
         
-         $('.navbar-nav > li > a[href="cart.html"]').click();
+         $('.navbar-nav > li > a[href="list.html"]').click();
     }
 }
 
@@ -2107,19 +2122,6 @@ function renderSinglePage(tx,results)
             
 
 
-           
-           
-           
-           
-
-            
-            
-        
-
-            
-
-            
-            
             
 			
 		if((getDateTimeNow() >= results.rows.item(0).PromoStartDate_CatMstr)&&(getDateTimeNow() <= results.rows.item(0).PromoEndDate_CatMstr))
@@ -2135,21 +2137,23 @@ function renderSinglePage(tx,results)
             
 
 			
-            /*----------------------------------place order button----------------------------------------*/		
-			var placeorderbtnstring =  '<a href="#" class="btn btn-success btn-large placeOrder" data-sku="'+ results.rows.item(0).SKU_InvtyCat +'" data-promoPrice="'+ results.rows.item(0).PromoPrice_InvtyCat +'" data-promoEndDate="'+ results.rows.item(0).PromoEndDate_CatMstr +'" data-promoStartDate="'+ results.rows.item(0).PromoStartDate_CatMstr +'" ';
-            
-			toCustomString(results.rows.item(0).CatalogueTitle_CatMstr);
-			placeorderbtnstring	+=' data-catalogue="'+ returnedCustom +'" ';
-			
-			toCustomString(results.rows.item(0).PromoName_InvtyCat);
-			placeorderbtnstring	+=' data-promoname="'+ returnedCustom +'" ';
-				
-			toCustomString(results.rows.item(0).PictureFileName_InvtyCat);
-			placeorderbtnstring += ' data-picturefilename="'+ returnedCustom  +'"';
-            
-            toCustomString(results.rows.item(0).FullDescription_InvtyCat);
-            placeorderbtnstring +=' data-fulldescription="'+ returnedCustom +'" data-BarcodeInvtyCat="'+results.rows.item(0).Barcode_InvtyCat+'" data-BrandInvtyCat="'+results.rows.item(0).Brand_InvtyCat+'" data-quantity="1" data-subtotal="'+ results.rows.item(0).PromoPrice_InvtyCat +'" data-orderedfrom="'+ globalorderedFrom +'">Place Order</a>';
-			  /*----------------------------------//place order button----------------------------------------*/		
+            /*----------------------------------Add To List button----------------------------------------*/
+          
+                var placeorderbtnstring =  '<a href="#" class="btn btn-success btn-large addToList" data-sku="'+ results.rows.item(0).SKU_InvtyCat +'" data-promoPrice="'+ results.rows.item(0).PromoPrice_InvtyCat +'" data-promoEndDate="'+ results.rows.item(0).PromoEndDate_CatMstr +'" data-promoStartDate="'+ results.rows.item(0).PromoStartDate_CatMstr +'" ';
+
+                toCustomString(results.rows.item(0).CatalogueTitle_CatMstr);
+                placeorderbtnstring	+=' data-catalogue="'+ returnedCustom +'" ';
+
+                toCustomString(results.rows.item(0).PromoName_InvtyCat);
+                placeorderbtnstring	+=' data-promoname="'+ returnedCustom +'" ';
+
+                toCustomString(results.rows.item(0).PictureFileName_InvtyCat);
+                placeorderbtnstring += ' data-picturefilename="'+ returnedCustom  +'"';
+
+                toCustomString(results.rows.item(0).FullDescription_InvtyCat);
+                placeorderbtnstring +=' data-fulldescription="'+ returnedCustom +'" data-BarcodeInvtyCat="'+results.rows.item(0).Barcode_InvtyCat+'" data-BrandInvtyCat="'+results.rows.item(0).Brand_InvtyCat+'" data-quantity="1" data-subtotal="'+ results.rows.item(0).PromoPrice_InvtyCat +'" data-orderedfrom="'+ globalorderedFrom +'">Add To list</a>';
+          
+			  /*----------------------------------//Add To List button----------------------------------------*/		
 			
 			//alert(placeorderbtnstring);
 			$( '.singleitemtable' ).after(placeorderbtnstring);
@@ -2196,7 +2200,7 @@ function queryItemDetailsByBarcode(tx,scanResult)
 
 
 
-/*-----------------single-itme.html to cart.html---------------------*/
+/*-----------------single-itme.html to list.html---------------------*/
 
    
     
@@ -2251,8 +2255,8 @@ function queryItemDetailsByBarcode(tx,scanResult)
             $('.glogtotal').append(glogtotal);
            
     
-            $('.placeOrder').attr('data-quantity',qval);
-            $('.placeOrder').attr('data-subtotal',glogtotal);
+            $('.addToList').attr('data-quantity',qval);
+            $('.addToList').attr('data-subtotal',glogtotal);
        
       
     });
@@ -2277,7 +2281,7 @@ function testinput(re, str)
 
 
 
-$(document).on('click','.placeOrder', function()
+$(document).on('click','.addToList', function()
 {
     var SKU = $(this).attr('data-sku');
     var picturefilename = $(this).attr('data-picturefilename');
@@ -2346,7 +2350,7 @@ $(document).on('click','.placeOrder', function()
     $('.forsingleonly a').click();//back
 });
 
-/*----------------//single-itme.html  to cart.html-------------------*/
+/*----------------//single-itme.html  to list.html-------------------*/
 
 /*---------------------------------------editOrder.html-----------------------------------*/
 function editOrderPageQuantityInputListener()
