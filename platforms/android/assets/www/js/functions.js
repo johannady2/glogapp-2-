@@ -2373,10 +2373,19 @@ $(document).on('click','.addToList', function()
     
 
 
+    $('.noti-any').html('<p>Item Added to List</p>');
     
-    alert('item added to cart');
+    $('.noti-any, .noti-blanket').show();
+
+setTimeout(function()
+{
     
-    $('.forsingleonly a').click();//back
+     $('.noti-any , .noti-blanket').hide();
+     $('.forsingleonly a').click();//back
+}, 1500);
+    
+    
+   
 });
 
 /*----------------//single-itme.html  to list.html-------------------*/

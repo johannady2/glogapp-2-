@@ -662,7 +662,7 @@ video#bgvid{
   color: #000000;
   z-index: 10000000;
   position: fixed;
-  top: 30px;
+  top: 20%;
   left: 29%;
   right: 29%;
 
