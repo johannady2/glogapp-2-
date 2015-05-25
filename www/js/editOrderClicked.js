@@ -78,8 +78,19 @@ $(document).on('editOrderClicked',function(event,orderidtoedit)
 
                     
                     
-                    alert('changes saved.');
-                    $('.foreditorderonly a').click();
+                       $('.noti-any').html('<p>Changes Saved</p>');
+    
+                        $('.noti-any, .noti-blanket').show();
+
+                        setTimeout(function()
+                        {
+
+                             $('.noti-any , .noti-blanket').hide();
+                             $('.foreditorderonly a').click();
+                        }, 1500);
+                    
+                    
+                    
 
                 });
 
@@ -167,8 +178,18 @@ $(document).on('editOrderClicked',function(event,orderidtoedit)
                
                     
                     
-                    alert('item removed');
-                    $('.foreditorderonly a').click();
+                    $('.noti-any').html('<p>Item Removed</p>');
+
+                    $('.noti-any, .noti-blanket').show();
+
+                    setTimeout(function()
+                    {
+
+                         $('.noti-any , .noti-blanket').hide();
+                         $('.foreditorderonly a').click();
+                    }, 1500);
+                    
+                   
                     
 
                 });

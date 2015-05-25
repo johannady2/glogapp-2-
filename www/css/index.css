@@ -411,11 +411,12 @@ body
 }
 
 
-.viewItem , .addToList , .saveChanges , .removeFromCart , .SearchBtn
+.viewItem , .addToList,.addToCart , .saveChanges , .removeFromCart , .SearchBtn
 {
     width:100%;
     min-height:50px;
     font-size:25px;
+    
 }
 
 .orderAll 
@@ -429,6 +430,7 @@ body
 
 .viewItem:visited,
 .addToList:visited,
+.addToCart:visited,
 .saveChanges:visited,
 .removeFromCart:visited,
 .orderAll:visited,

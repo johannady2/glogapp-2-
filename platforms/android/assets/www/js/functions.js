@@ -1627,7 +1627,7 @@ function queryCartSettings(tx)
 
 function renderCartList(tx,results)
 {
-	/*initialization of variables for valid items. Only  data  from valid variables will be passed to order all button*/
+  /*initialization of variables for valid items. Only  data  from valid variables will be passed to order all button*/
     varlidORDERIDS = [];//TURNED TO GLOBAL.. set back to zero each time cart is opened.
     responsecount = 0;//set back to zero whenever rendercartlist
     
@@ -1904,7 +1904,6 @@ function renderCartList(tx,results)
 
         
 	
-
     
 }
 
@@ -2165,10 +2164,42 @@ function renderSinglePage(tx,results)
 		}
             
 
-			
+          
+
+            
             /*----------------------------------Add To List button----------------------------------------*/
           
-                var placeorderbtnstring =  '<a href="#" class="btn btn-success btn-large addToList" data-sku="'+ results.rows.item(0).SKU_InvtyCat +'" data-promoPrice="'+ results.rows.item(0).PromoPrice_InvtyCat +'" data-promoEndDate="'+ results.rows.item(0).PromoEndDate_CatMstr +'" data-promoStartDate="'+ results.rows.item(0).PromoStartDate_CatMstr +'" ';
+                var addtoliststring =  '<a href="#" class="btn btn-primary btn-large addToList" data-sku="'+ results.rows.item(0).SKU_InvtyCat +'" data-promoPrice="'+ results.rows.item(0).PromoPrice_InvtyCat +'" data-promoEndDate="'+ results.rows.item(0).PromoEndDate_CatMstr +'" data-promoStartDate="'+ results.rows.item(0).PromoStartDate_CatMstr +'" ';
+
+                toCustomString(results.rows.item(0).CatalogueTitle_CatMstr);
+                addtoliststring	+=' data-catalogue="'+ returnedCustom +'" ';
+
+                toCustomString(results.rows.item(0).PromoName_InvtyCat);
+                addtoliststring	+=' data-promoname="'+ returnedCustom +'" ';
+
+                toCustomString(results.rows.item(0).PictureFileName_InvtyCat);
+                addtoliststring += ' data-picturefilename="'+ returnedCustom  +'"';
+
+                toCustomString(results.rows.item(0).FullDescription_InvtyCat);
+                addtoliststring +=' data-fulldescription="'+ returnedCustom +'" data-BarcodeInvtyCat="'+results.rows.item(0).Barcode_InvtyCat+'" data-BrandInvtyCat="'+results.rows.item(0).Brand_InvtyCat+'" data-quantity="1" data-subtotal="'+ results.rows.item(0).PromoPrice_InvtyCat +'" data-orderedfrom="'+ globalorderedFrom +'">Add to List</a>';
+          
+			  /*----------------------------------//Add To List button----------------------------------------*/		
+			
+			//alert(addtoliststring);
+			$( '.singleitemtable' ).after(addtoliststring);
+            
+            
+            
+            
+            
+            
+/*----------------------------------Add to Cart button------------------------------------*/
+            
+            if(networkstatus == 'connected')
+            {
+                        
+        
+                var placeorderbtnstring =  '<a href="#" class="btn btn-success btn-large addToCart" data-sku="'+ results.rows.item(0).SKU_InvtyCat +'" data-promoPrice="'+ results.rows.item(0).PromoPrice_InvtyCat +'" data-promoEndDate="'+ results.rows.item(0).PromoEndDate_CatMstr +'" data-promoStartDate="'+ results.rows.item(0).PromoStartDate_CatMstr +'" ';
 
                 toCustomString(results.rows.item(0).CatalogueTitle_CatMstr);
                 placeorderbtnstring	+=' data-catalogue="'+ returnedCustom +'" ';
@@ -2180,12 +2211,44 @@ function renderSinglePage(tx,results)
                 placeorderbtnstring += ' data-picturefilename="'+ returnedCustom  +'"';
 
                 toCustomString(results.rows.item(0).FullDescription_InvtyCat);
-                placeorderbtnstring +=' data-fulldescription="'+ returnedCustom +'" data-BarcodeInvtyCat="'+results.rows.item(0).Barcode_InvtyCat+'" data-BrandInvtyCat="'+results.rows.item(0).Brand_InvtyCat+'" data-quantity="1" data-subtotal="'+ results.rows.item(0).PromoPrice_InvtyCat +'" data-orderedfrom="'+ globalorderedFrom +'">Add To list</a>';
+                placeorderbtnstring +=' data-fulldescription="'+ returnedCustom +'" data-BarcodeInvtyCat="'+results.rows.item(0).Barcode_InvtyCat+'" data-BrandInvtyCat="'+results.rows.item(0).Brand_InvtyCat+'" data-quantity="1" data-subtotal="'+ results.rows.item(0).PromoPrice_InvtyCat +'" data-orderedfrom="'+ globalorderedFrom +'">Add to Cart</a><br><br>';
           
-			  /*----------------------------------//Add To List button----------------------------------------*/		
-			
-			//alert(placeorderbtnstring);
-			$( '.singleitemtable' ).after(placeorderbtnstring);
+
+            }
+            
+            $( '.singleitemtable' ).after(placeorderbtnstring);
+            
+            $('.addToCart').on('click',function()
+            {
+            
+            alert('http://viveg.net/index.php?barcode='+$('.addToCart').attr('data-BarcodeInvtyCat')+'&quantity='+$('.addToCart').attr('data-quantity')+'&email=useremail@gmail.com'+'&mobile=09999999999'+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c');
+            
+                ref = window.open('http://viveg.net/index.php?barcode='+$('.addToCart').attr('data-BarcodeInvtyCat')+'&quantity='+$('.addToCart').attr('data-quantity')+'&email=useremail@gmail.com'+'&mobile=09999999999'+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c', '_blank', 'location=yes');
+            });
+
+            
+/*----------------------------------//Add to Cart button------------------------------------*/
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 		
         });
        
