@@ -1561,6 +1561,23 @@ function startSearch()
 }
 
 
+$('body').on('click', '.advcSrchBtn', function()
+{
+    $( ".advcSrch" ).each(function( index )
+    {
+        
+        if( $(this).is(":visible"))
+        {
+            $(this).hide();
+        }
+        else
+        {
+             $(this).show();
+        }
+    });
+
+});
+
 function queryCategoriesForSelectBox(tx)
 {   
 	tx.executeSql('SELECT * FROM CATEGORY_MASTER', [], renderCategoriesToSelectBox);
