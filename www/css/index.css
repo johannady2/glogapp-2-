@@ -428,13 +428,17 @@ body
     display:block;
 }
 
+.noti-offline:visited,
+.noti-online:visited,
 .viewItem:visited,
 .addToList:visited,
 .addToCart:visited,
 .saveChanges:visited,
 .removeFromCart:visited,
 .orderAll:visited,
-.SearchBtn:visited
+.SearchBtn:visited,
+.orderAllAgree:visited,
+.orderAllCancel:visited
 {
     color:#ffffff;
 }

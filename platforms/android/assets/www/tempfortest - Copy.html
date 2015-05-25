@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="description" content="">
+			<meta name="author" content="">
+
+			<title>GLog</title>
+
+		  <!-- Latest compiled and minified CSS -->
+		  <link rel="stylesheet" href="css/bootstrap.min.css">
+		 
+
+		  <!-- Custom styles for this template -->
+		  <link href="css/index.css" rel="stylesheet">
+
+		  <!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="http://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+			<script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+		  <![endif]-->
+		  </head>
+        <title>Hello World</title>
+    </head>
+    <body onload="onBodyLoad()" style="background-image: url(file:///C:/xampp/htdocs/glogapp/www/img/splashbg.jpg);">
+		<div id="page" class="hfeed site">
+
+		  <header id="masthead" class="site-header container" role="banner">
+			<div class="row">
+			  <div class="col-sm-12 col-md-12">
+				  
+				
+
+					<nav role="navigation" class="navbar navbar-default navbar-fixed-top" style="display:none;">
+
+						<!-- Brand and toggle get grouped for better mobile display -->
+
+						<div class="navbar-header">
+
+							<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+
+							</button>
+
+							<a href="catalogue.html" class="navbar-brand">G-log</a>
+
+						</div>
+
+						<!-- Collection of nav links and other content for toggling -->
+
+						<div id="navbarCollapse" class="collapse navbar-collapse">
+
+							<ul class="nav navbar-nav">
+                                <li class="forsingleonly"><a href="#">Back</a></li>
+                                <li class="foreditorderonly"><a href="#">Back</a></li>
+                                <!--for navigation right after logo-->
+							</ul>
+						
+							 <ul class="nav navbar-nav navbar-right rightmenu">
+                                
+                                 <li><a type="button" href="scan.html" value="Scan Barcode" onclick="scanner.startScanning(MWBSInitSpace.init,MWBSInitSpace.callback)" class="scanbtn">Scan</a></li>
+                                <li ><a href="catalogue.html" class="webdefault">G-Catalogue</a></li>
+                                 <li><a href="search.html">Search</a></li>
+                                 <li><a href="cart.html">Cart</a></li>
+                                 
+							<!--	<li><a href="other.html">Other</a></li>
+								<li><a href="test-localstorage.html">LS Test 1</a></li>
+								<li><a href="test-getjson.html">getJsonTest</a></li> -->
+                                  
+								
+							</ul>
+
+						</div>
+                        
+                        
+
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+					</nav>
+
+
+			</div>
+		  </header><!-- #masthead -->
+
+		  <div id="content" class="site-content">
+
+			 
+				<div class="content-cont">
+		
+		
+
+
+
+<div class="row splashscreencont" style="padding:0px !important; margin:0px !important;">
+
+    <div class="col-md-12 col-sm-12 col-xs-12" style="padding:0px !important; margin:0px !important;">
+	
+			<!--<div style="position: absolute; margin: 0 auto; width: 25%;  display: block;left: 25%; right: 25%;">-->
+				<h1 class="splashscreen-logo">G-Log</h1>
+				
+				<img src="img/loading.gif" style="margin: 0 auto;" class="splashloading">
+				
+				<a href="#" class="slideToUnlock" style="background-color:green; color:#ffffff; padding: 3px 5px; display:none;">Start Browsing</a>
+	
+    </div>
+			
+			
+			<!--<video id="bgvid" autoplay poster="img/videoimage.jpg"> 
+				<source src="img/video.mp4" type="video/mp4" />
+			</video>-->
+ </div>
+
+<div class="noti noti-offline">
+    <h3> Attention: </h3>
+    <p> You are currently on offline mode. Be aware that the info in your device may not be updated.</p>
+    <a href="#" class="btn btn-success btn-large pull-right btn-noti-offline">Okay</a> <div class="clearfix"></div>
+</div>            
+
+<div class="noti noti-online">
+  <form class="orderallconfirmationform" method="post"><input type="email" name="user_email" placeholder="e-mail" value=""/><br>
+    <input type="text" name="user_mobile_number" placeholder="mobile number" value=""/><br>
+<a href="#" class="btn btn-danger pull-left orderAllCancel">Cancel</a>
+<button type="submit" class="btn btn-success pull-right orderAllAgree">Okay</button>
+</form>
+</div>
+
+<div class="noti-blanket"></div>
+		</div><!-- #content .site-content -->
+
+		  
+
+		  <footer id="colophon" class="site-footer container" role="contentinfo" style="display:none;">
+            <hr>
+			<div class="row">
+			  <div class="col-sm-8 col-md-8">
+				<p><small><em>G-log</em></small></p>
+				  
+			  </div>
+			  <div class="pull-right">
+				<p><small>Copyright &copy; 2015. All rights reserved.</small></p>
+			  </div>
+
+			  <div class="col-sm-12 col-md-12 aligncenter">
+				  <p><small>&#9733; &#12484; &#9733;</small></p>
+			  </div>
+
+			</div>
+		  </footer><!-- #colophon -->
+
+		</div><!-- #page -->
+
+        <!--<script src="js/masonry-docs.min.js"></script>-->
+		<!--<script src="js/jquery-1.11.2.min.js"></script>-->
+		<script type="text/javascript" src="cordova.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+            
+        <script src="js/navClickedListener.js"></script>
+		<script src="js/viewItemClickedListener.js"></script>
+		<script src="js/itemScannedListener.js"></script>
+		<script src="js/editOrderClicked.js"></script>
+            
+		<script src="js/functions.js"></script>
+        <script type="text/javascript" src="js/MWBConfig.js"></script>   
+       <!-- <script type="text
+		<script src="js/contentloader.js"></script>/javascript" src="js/index.js"></script>-->
+
+		
+<script>
+     $('body').on('submit','.orderallconfirmationform' , function()
+     {
+         return false;
+    alert('test');
+     });
+</script>
+        
+		
+    </body>
+</html>
