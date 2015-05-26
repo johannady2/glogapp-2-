@@ -428,6 +428,7 @@ body
     display:block;
 }
 
+
 .btn-noti-offline:visited,
 .btn-noti-online:visited,
 .viewItem:visited,
@@ -438,7 +439,9 @@ body
 .orderAll:visited,
 .SearchBtn:visited,
 .orderAllAgree:visited,
-.orderAllCancel:visited
+.orderAllCancel:visited,
+.addToCartAgree:visited,
+.addToCartCancel:visited
 {
     color:#ffffff;
 }

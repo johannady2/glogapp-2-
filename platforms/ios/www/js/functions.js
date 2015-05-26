@@ -2295,11 +2295,71 @@ function renderSinglePage(tx,results)
             
             $('.addToCart').on('click',function()
             {
+                
+                
+                
+                
+                
+                /*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+                
+                
+                
+         var addToCartstrring = '<input type="email" class="validateplstwo" name="user_email" placeholder="e-mail" value="'+  localStorage.user_email +'"/><br>';
+        addToCartstrring += '<input type="text" class="validateplstwo" name="user_mobile_number" placeholder="mobile number" value="'+localStorage.user_mobile_number+'"/><br>'; 
+        addToCartstrring += '<a href="#" class="btn btn-danger pull-left addToCartCancel">Cancel</a><input type="button" class="btn btn-success pull-right addToCartAgree" value="okay" disabled="true"/><div class="clearfix"></div>';
+        
+        $('.noti-any , .noti-blanket').show();
+        $('.noti-any').html(addToCartstrring);
+        
+        
+        
+        
+                
+        if((!validateEmail($('input[name="user_email"]').val())) || ($('input[name="user_email"]').val().length <= 0 && $('input[name="user_mobile_number"]').val().length <= 0))
+        { 
+            $("input.addToCartAgree").prop('disabled', true);
+        }
+        else
+        {
+            $("input.addToCartAgree").prop('disabled', false);
+        }
+                
+
+            });
             
-            alert('http://viveg.net/index.php?barcode='+$('.addToCart').attr('data-BarcodeInvtyCat')+'&quantity='+$('.addToCart').attr('data-quantity')+'&email=useremail@gmail.com'+'&mobile=09999999999'+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c');
+            
+ 
+            
+$('body').on('input','.validateplstwo',function ()
+{
+
+
+                
+        if((!validateEmail($('input[name="user_email"]').val())) || ($('input[name="user_email"]').val().length <= 0 && $('input[name="user_mobile_number"]').val().length <= 0))
+        { 
+            $("input.addToCartAgree").prop('disabled', true);
+        }
+        else
+        {
+            $("input.addToCartAgree").prop('disabled', false);
+        }
+
+});  
+
+$('body').off('click','.addToCartCancel').on('click','.addToCartCancel', function()
+{
+     $('.noti-any , .noti-blanket').hide();
+});
+ 
+
+$('body').off('click','.addToCartAgree').on('click','.addToCartAgree' , function()
+{
+   
+alert('http://viveg.net/index.php?barcode='+$('.addToCart').attr('data-BarcodeInvtyCat')+'&quantity='+$('.addToCart').attr('data-quantity')+'&email=useremail@gmail.com'+'&mobile=09999999999'+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c');
             
                 ref = window.open('http://viveg.net/index.php?barcode='+$('.addToCart').attr('data-BarcodeInvtyCat')+'&quantity='+$('.addToCart').attr('data-quantity')+'&email=useremail@gmail.com'+'&mobile=09999999999'+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c', '_blank', 'location=yes');
-            });
+
+});
 
             
 /*----------------------------------//Add to Cart button------------------------------------*/
@@ -2450,7 +2510,9 @@ function testinput(re, str)
 
 $(document).on('click','.addToList', function()
 {
-    var SKU = $(this).attr('data-sku');
+    
+    
+     var SKU = $(this).attr('data-sku');
     var picturefilename = $(this).attr('data-picturefilename');
 	var BarcodeInvtyCat = $(this).attr('data-BarcodeInvtyCat');
 	var BrandInvtyCat = $(this).attr('data-BrandInvtyCat');
@@ -2467,18 +2529,6 @@ $(document).on('click','.addToList', function()
 
     
 
-    //this prevents commas from promonames from being interpreted as , when localstorage string is turned into an array
-		//SKU = toCustomString(SKU.toString());
-		// picturefilename = toCustomString(picturefilename.toString());
-		// BarcodeInvtyCat = toCustomString(BarcodeInvtyCat.toString());
-		//fulldescription = toCustomString(fulldescription);
-		//promoname = toCustomString(promoname);
-		//promoPrice = toCustomString(promoPrice.toString());
-		//promoEndDate = toCustomString(promoEndDate.toString());
-		//promoStartDate = toCustomString(promoStartDate.toString());
-		// quantity = toCustomString(quantity.toString());
-		// subtotal = toCustomString(subtotal.toString());
-		//orderedFrom = toCustomString(orderedFrom.toString());
 
 
 	
@@ -2512,7 +2562,7 @@ $(document).on('click','.addToList', function()
 
 
     $('.noti-any').html('<p>Item Added to List</p>');
-    
+ 
     $('.noti-any, .noti-blanket').show();
 
 setTimeout(function()
@@ -2521,10 +2571,13 @@ setTimeout(function()
      $('.noti-any , .noti-blanket').hide();
      $('.forsingleonly a').click();//back
 }, 1500);
+     
     
-    
-   
+      
+        
 });
+
+   
 
 /*----------------//single-itme.html  to list.html-------------------*/
 
