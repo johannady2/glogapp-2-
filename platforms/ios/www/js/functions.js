@@ -1917,9 +1917,12 @@ function renderCartList(tx,results)
      $('body').off('click','.orderAllAgree').on('click','.orderAllAgree' , function()
      {
          
+    
+        
          $('.noti-any , .noti-blanket').hide();
-     
-       /* alert($('.orderAll').attr('data-sku'));
+         
+        
+        /* alert($('.orderAll').attr('data-sku'));
         alert($('.orderAll').attr('data-picturefilename'));
         alert($('.orderAll').attr('data-barcode'));
         alert($('.orderAll').attr('data-brand'));
@@ -1935,16 +1938,18 @@ function renderCartList(tx,results)
         alert('TOTAL:' + orderAllTotal);
          */
          
+     
+
+         
         localStorage.user_email = $('input[ name="user_email"]').val();
         localStorage.user_mobile_number = $('input[name="user_mobile_number"]').val();
-        
-        alert('http://viveg.net/index.php?barcode='+$('.orderAll').attr('data-barcode')+'&quantity='+$('.orderAll').attr('data-quantity')+'&email='+$('input[ name="user_email"]').val()+'&mobile='+$('input[name="user_mobile_number]').val()+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c');
-        
-        ref = window.open('http://viveg.net/index.php?barcode='+$('.orderAll').attr('data-barcode')+'&quantity='+$('.orderAll').attr('data-quantity')+'&email='+$('input[ name="user_email"]').val()+'&mobile='+$('input[name="user_mobile_number]').val()+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c', '_blank', 'location=yes');
-    
-
 
         
+    // alert('http://viveg.net/index.php?barcode='+$('.orderAll').attr('data-barcode')+'&quantity='+$('.orderAll').attr('data-quantity')+'&email='+$('input[name="user_email"]').val()+'&mobile='+$('input[name="user_mobile_number"]').val()+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c');
+
+        
+     ref = window.open('http://viveg.net/index.php?barcode='+$('.orderAll').attr('data-barcode')+'&quantity='+$('.orderAll').attr('data-quantity')+'&email='+$('input[name="user_email"]').val()+'&mobile='+$('input[name="user_mobile_number"]').val()+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c', '_blank', 'location=yes');
+
       
         //This simply removes all valid items. after order all button is clicked.
         for(var xx=0; xx < varlidORDERIDS.length; xx++)
@@ -2304,8 +2309,8 @@ function renderSinglePage(tx,results)
                 
                 
                 
-         var addToCartstrring = '<input type="email" class="validateplstwo" name="user_email" placeholder="e-mail" value="'+  localStorage.user_email +'"/><br>';
-        addToCartstrring += '<input type="text" class="validateplstwo" name="user_mobile_number" placeholder="mobile number" value="'+localStorage.user_mobile_number+'"/><br>'; 
+         var addToCartstrring = '<input type="email" class="validateplstwo" name="user_emailtwo" placeholder="e-mail" value="'+  localStorage.user_email +'"/><br>';
+        addToCartstrring += '<input type="text" class="validateplstwo" name="user_mobile_numbertwo" placeholder="mobile number" value="'+localStorage.user_mobile_number+'"/><br>'; 
         addToCartstrring += '<a href="#" class="btn btn-danger pull-left addToCartCancel">Cancel</a><input type="button" class="btn btn-success pull-right addToCartAgree" value="okay" disabled="true"/><div class="clearfix"></div>';
         
         $('.noti-any , .noti-blanket').show();
@@ -2315,7 +2320,7 @@ function renderSinglePage(tx,results)
         
         
                 
-        if((!validateEmail($('input[name="user_email"]').val())) || ($('input[name="user_email"]').val().length <= 0 && $('input[name="user_mobile_number"]').val().length <= 0))
+        if((!validateEmail($('input[name="user_emailtwo"]').val())) || ($('input[name="user_emailtwo"]').val().length <= 0 && $('input[name="user_mobile_numbertwo"]').val().length <= 0))
         { 
             $("input.addToCartAgree").prop('disabled', true);
         }
@@ -2335,7 +2340,7 @@ $('body').on('input','.validateplstwo',function ()
 
 
                 
-        if((!validateEmail($('input[name="user_email"]').val())) || ($('input[name="user_email"]').val().length <= 0 && $('input[name="user_mobile_number"]').val().length <= 0))
+        if((!validateEmail($('input[name="user_emailtwo"]').val())) || ($('input[name="user_emailtwo"]').val().length <= 0 && $('input[name="user_mobile_numbertwo"]').val().length <= 0))
         { 
             $("input.addToCartAgree").prop('disabled', true);
         }
@@ -2354,10 +2359,14 @@ $('body').off('click','.addToCartCancel').on('click','.addToCartCancel', functio
 
 $('body').off('click','.addToCartAgree').on('click','.addToCartAgree' , function()
 {
-   
-alert('http://viveg.net/index.php?barcode='+$('.addToCart').attr('data-BarcodeInvtyCat')+'&quantity='+$('.addToCart').attr('data-quantity')+'&email=useremail@gmail.com'+'&mobile=09999999999'+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c');
-            
-                ref = window.open('http://viveg.net/index.php?barcode='+$('.addToCart').attr('data-BarcodeInvtyCat')+'&quantity='+$('.addToCart').attr('data-quantity')+'&email=useremail@gmail.com'+'&mobile=09999999999'+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c', '_blank', 'location=yes');
+$('.noti-any , .noti-blanket').hide();
+    
+
+ref = window.open('http://viveg.net/index.php?barcode='+$('.addToCart').attr('data-BarcodeInvtyCat')+'&quantity='+$('.addToCart').attr('data-quantity')+'&email='+$('input[name="user_emailtwo"]').val()+'&mobile='+$('input[name="user_mobile_numbertwo"]').val()+'&localmobiledate='+getDateNow()+'&glog-app-access=76ef0d45220fdee3ac883a0c7565e50c', '_blank', 'location=yes');
+    
+    
+    localStorage.user_email = $('input[name="user_emailtwo"]').val();
+    localStorage.user_mobile_number =$('input[name="user_mobile_numbertwo"]').val();
 
 });
 

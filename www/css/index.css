@@ -615,36 +615,6 @@ body
 
 
 
-input[type="radio"].img-radio
-{
-    margin:0;padding:0;
-    -webkit-appearance:none;
-       -moz-appearance:none;
-            appearance:none;
-    
-}
-input[type="radio"].img-radio+ label>div
-{ 
-   display: inline-block;
-  width: 50px;
-  height: 50px;
-  border-radius: 5px;
-  margin-left: 10px;
-  position: relative;
- border:2px solid white;
-  
-  } 
-input[type="radio"].img-radio:checked+ label>div
-{ 
-    border:2px solid rgb(108, 179, 62);
-} 
-input[type="radio"].img-radio:checked+ label>div::after
-{ 
-    content:url('../img/check.png');
-    position:absolute;
-    bottom:0px;
-    right:3px;
-} 
 
 
 video#bgvid{
@@ -692,6 +662,17 @@ video#bgvid{
 .advcSrch
 {
     display:none;
+}
+
+
+.splashtitleandstuff
+{
+    position: absolute;
+    margin: 0 auto;
+    width: 25%;
+    display: block;
+    left: 25%;
+    right: 25%;
 }
 				/*Masonry Stuff*/
                             #wrapper
@@ -778,13 +759,8 @@ video#bgvid{
     {
         padding-right: 0px;
     }
-}
-
-
-@media screen and (max-width: 30em) {
-	/* width 480px */
     
-    .addToCart
+          .addToCart , .addToList
     {
         font-size: 15px;
         min-height: 35px;
@@ -803,4 +779,65 @@ video#bgvid{
         font-size:15px;
         font-weight:bold;
     }
+    
+    .noti
+    {
+     
+      width: 70%;
+      padding: 6%;
+      border-radius: 5px;
+      top: 20%;
+      left: 15%;
+      right: 15%;
+    }
+    
+    
+    .splashtitleandstuff
+    {
+       
+        width: 88%;
+        display: block;
+        left: 6%;
+        right: 6%;
+    }
+    
+    
+    .orderAll 
+    {
+        font-size: 15px;
+        min-height: 35px;
+        font-weight:bold;
+        width:80%;
+        margin: 10px auto 0 auto;
+        display:block;
+    }
+    
+    
+    .orderAllAreaNote
+    {
+
+        width:80%;
+        margin: 0 auto 12px auto;
+
+    }
+
+    
+    .viewItem , .addToList,.addToCart , .saveChanges , .removeFromCart , .SearchBtn
+    {
+        width:100%;
+        font-weight:bold;
+        min-height:35px;
+        font-size:15px;
+
+    }
+
+}
+
+
+@media screen and (max-width: 30em) {
+	/* width 480px */
+    
+      
+
+
 }
