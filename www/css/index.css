@@ -428,8 +428,8 @@ body
     display:block;
 }
 
-.noti-offline:visited,
-.noti-online:visited,
+.btn-noti-offline:visited,
+.btn-noti-online:visited,
 .viewItem:visited,
 .addToList:visited,
 .addToCart:visited,

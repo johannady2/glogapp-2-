@@ -1569,6 +1569,9 @@ $('body').on('click', '.advcSrchBtn', function()
         if( $(this).is(":visible"))
         {
             $(this).hide();
+            $(this).children().children('input[type="text"]').val('');
+            $(this).children().children('select').val('');
+          
         }
         else
         {
