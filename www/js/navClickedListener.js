@@ -3,6 +3,7 @@ $(document).on('navClicked',function(event,filename)
 
     if(filename == "catalogue.html")
     { 
+       
         if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/))
         { globalorderFromSwitch = 0;
         //alert('switch =='+ globalorderFromSwitch );

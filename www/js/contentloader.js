@@ -63,26 +63,29 @@
                 
                
                 var navbarContent = $(this).attr('href');
-
-                $('.navbar-nav > li > a[href="'+navbarContent+'"]').click();
+                 
+                //$('.navbar-nav > li > a[href="'+navbarContent+'"].navbrandopen').first().click();
+               
+                var loadThisContent = $('.navbar-nav > li > a[href="'+navbarContent+'"].navbrandopen').attr('href');
                 
             }
             else
             {
                 $(this).parent().addClass('active');/* .not('.navbar-brand')*/
+                 var loadThisContent = $(this).attr('href');
             }
          
 
          
-            var loadThisContent = $(this).attr('href');
+           
             
             
             $('.forsingleonly a').attr('href',loadThisContent);
             //alert('backbutton updated');
          
-         
+           
             //$(".content-cont").load(loadThisContent);
-            $(".content-cont").load(loadThisContent,  null, function(event,filename)
+            $(".content-cont").unload().load(loadThisContent,  null, function(event,filename)
             {
 
                     var filename = loadThisContent;
@@ -93,7 +96,7 @@
 
         });
      
-        $('.forsingleonly a').on('click', function(e)
+        $('body').off('click','.forsingleonly a').on('click','.forsingleonly a', function(e)
         {  e.preventDefault();
             var backTo = $(this).attr('href');
             
