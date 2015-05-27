@@ -503,6 +503,7 @@ body
 .forsingleonly , .foreditorderonly
 {
     display:none;
+    padding-left:15px;
 }
 
 .cartItemCont

@@ -2754,3 +2754,26 @@ function validateEmail($email) {
   var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
   return emailReg.test( $email );
 }
+
+$('.content-cont').bind("DOMSubtreeModified",function()
+{
+
+    
+        if($(document).width() <= 767)
+        {
+            if($('.forsingleonly').is(":visible") || $('.foreditorderonly').is(":visible"))
+            {
+                $('.navbar-default .navbar-toggle').hide();
+            }
+            else
+            {
+                 $('.navbar-default .navbar-toggle').show();
+            }
+        }
+        else
+        {
+             $('.navbar-default .navbar-toggle').hide();
+        }
+
+ 
+});
