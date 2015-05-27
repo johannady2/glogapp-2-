@@ -76,7 +76,7 @@ MWBSInitSpace.init = function(mwbs,constants,dvc){
    try{
         /*UNCOMMENT the lines you wish to include in the settings */
         mwbs['MWBsetInterfaceOrientation'] (constants.OrientationPortrait);
-        mwbs['MWBsetOverlayMode'](constants.OverlayModeImage);
+        //['MWBsetOverlayMode'](constants.OverlayModeImage);
         //mwbs['MWBenableHiRes'](true);
         // mwbs['MWBenableFlash'](true);
         // mwbs['MWBsetActiveCodes'](constants.MWB_CODE_MASK_128 | constants.MWB_CODE_MASK_39);
