@@ -20,12 +20,12 @@ MWBSInitSpace.init = function(mwbs,constants,dvc){
                'MWB_CODE_MASK_25' : {'username' : '', 'key' : ''},
                'MWB_CODE_MASK_39' : {'username':'','key':''},
                'MWB_CODE_MASK_93' : {'username':'','key':''},
-               'MWB_CODE_MASK_128' : {'username':'','key':''},
+               'MWB_CODE_MASK_128' : {'username':'wachuy@yahoo.com','key':'428FB25660F7D0DDCBD5DDC13FC2624DC3004048D83AC6B16799D2D1B869422F'},
                'MWB_CODE_MASK_AZTEC' : {'username':'','key':''},
                'MWB_CODE_MASK_DM' : {'username':'','key':''},
                'MWB_CODE_MASK_EANUPC' : {'username':'','key':''},
                'MWB_CODE_MASK_PDF' : {'username':'','key':''},
-               'MWB_CODE_MASK_QR' : {'username':'','key':''},
+               'MWB_CODE_MASK_QR' : {'username':'wachuy@yahoo.com','key':'0C7916A58145835F8C6C661E669C2166872ABAD1ACC5122C4C30939C1E880E8C'},
                'MWB_CODE_MASK_RSS' : {'username':'','key':''},
                'MWB_CODE_MASK_CODABAR' : {'username':'','key':''},
                'MWB_CODE_MASK_DOTCODE' : {'username':'','key':''}
@@ -34,12 +34,12 @@ MWBSInitSpace.init = function(mwbs,constants,dvc){
                'MWB_CODE_MASK_25' : {'username' : '', 'key' : ''},
                'MWB_CODE_MASK_39' : {'username':'','key':''},
                'MWB_CODE_MASK_93' : {'username':'','key':''},
-               'MWB_CODE_MASK_128' : {'username':'','key':''},
+               'MWB_CODE_MASK_128' : {'username':'wachuy@yahoo.com','key':'59D634FC2660F9173606AE79FC67FB7C74497B59C3CAE62598585403435F02B0'},
                'MWB_CODE_MASK_AZTEC' : {'username':'','key':''},
                'MWB_CODE_MASK_DM' : {'username':'','key':''},
                'MWB_CODE_MASK_EANUPC' : {'username':'','key':''},
                'MWB_CODE_MASK_PDF' : {'username':'','key':''},
-               'MWB_CODE_MASK_QR' : {'username':'','key':''},
+               'MWB_CODE_MASK_QR' : {'username':'wachuy@yahoo.com','key':'EC9BF9F6645469E1104003230B1B525E3F2C7A70A4EC2E293E1D84B20C9E3B5C'},
                'MWB_CODE_MASK_RSS' : {'username':'','key':''},
                'MWB_CODE_MASK_CODABAR' : {'username':'','key':''},
                'MWB_CODE_MASK_DOTCODE' : {'username':'','key':''}
@@ -73,25 +73,26 @@ MWBSInitSpace.init = function(mwbs,constants,dvc){
 
     /* BEGIN settings CALLS */
         //if your code doesn't work after changing a few parameters, and there is no error output, uncomment the try-catch, the error will be output in your console
-//    try{
+   try{
         /*UNCOMMENT the lines you wish to include in the settings */
-        //mwbs['MWBsetInterfaceOrientation'] (constants.OrientationPortrait);
-        //mwbs['MWBsetOverlayMode'](constants.OverlayModeImage);
+        mwbs['MWBsetInterfaceOrientation'] (constants.OrientationPortrait);
+        mwbs['MWBsetOverlayMode'](constants.OverlayModeImage);
         //mwbs['MWBenableHiRes'](true);
-        //mwbs['MWBenableFlash'](true);
-        //mwbs['MWBsetActiveCodes'](constants.MWB_CODE_MASK_128 | constants.MWB_CODE_MASK_39);
-        //mwbs['MWBsetLevel'](2);
+        // mwbs['MWBenableFlash'](true);
+        // mwbs['MWBsetActiveCodes'](constants.MWB_CODE_MASK_128 | constants.MWB_CODE_MASK_39);
+        // mwbs['MWBsetLevel'](2);
         //mwbs['MWBsetFlags'](constants.MWB_CODE_MASK_39, constants.MWB_CFG_CODE39_EXTENDED_MODE);
-        //mwbs['MWBsetDirection'](constants.MWB_SCANDIRECTION_VERTICAL | constants.MWB_SCANDIRECTION_HORIZONTAL);
-        //mwbs['MWBsetScanningRect'](constants.MWB_CODE_MASK_39, 20,20,60,60);
-        //mwbs['MWBenableZoom'](true);
-        //mwbs['MWBsetZoomLevels'](200, 400, 0);
-        //mwbs['MWBsetCustomParam']('CUSTOM_PARAM','CUSTOM_VALUE');
-        //mwbs['MWBsetActiveSubcodes'](constants.MWB_CODE_MASK_25 | constants.MWB_SUBC_MASK_C25_INTERLEAVED);        
-//    }
-//    catch(e){
-//        console.log(e);
-//    }
+        //  mwbs['MWBsetDirection'](constants.MWB_SCANDIRECTION_VERTICAL | constants.MWB_SCANDIRECTION_HORIZONTAL);
+        //  mwbs['MWBsetScanningRect'](constants.MWB_CODE_MASK_39, 20,20,60,60);
+        //  mwbs['MWBenableZoom'](true);
+        //  mwbs['MWBsetZoomLevels'](200, 400, 0);
+        //  mwbs['MWBsetCustomParam']('CUSTOM_PARAM','CUSTOM_VALUE');
+        //  mwbs['MWBsetActiveSubcodes'](constants.MWB_CODE_MASK_25 | constants.MWB_SUBC_MASK_C25_INTERLEAVED);        
+    }
+    catch(e){
+        console.log(e);
+        
+    }
 
     /* END settings CALLS */
     

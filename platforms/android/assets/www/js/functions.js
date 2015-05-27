@@ -2401,7 +2401,7 @@ ref = window.open('http://viveg.net/index.php?barcode='+$('.addToCart').attr('da
     }
     else
     {
-        htmlstringSingle = 'Sorry, we do not have this item.';
+        htmlstringSingle = '<p style="margin-top:200px"><br><br>Sorry, we do not have this item.</p>';
         $('.content-cont').empty();
         $('.content-cont').append(htmlstringSingle);
     
