@@ -202,6 +202,7 @@ function onDeviceOffline()
     
     initializeDB();
     
+    
    
     $('.noti-online , .splashscreencont').hide();
     $('.noti-blanket , .noti-offline').show();
@@ -218,19 +219,120 @@ $('.btn-noti-offline').on('click',function()
     $('.splashscreencont').show();
 });
 
+function isjsonready()
+{ 
+ 
+
+            $.when( 
+                    $.getJSON('http://www.viveg.net/api4v2.php?format=json&barcode=4806508161665&user=wcu&pass=v1v3g')
+                  ).done(function(invtycatpresta)
+            {
+
+          
+          
+               alert(invtycatpresta[0]);
+                
+                $('.getjsontest').append("<br><br>---NEW INVENTORY_MASTER_CATALOGUE----<br><br>");
+                    
+                    $.each(invtycatpresta, function( index, value ) 
+                      {
+                        alert(index);
+                            $.each(value, function(inde, valu)
+                            {
+                                $.each(valu, function(ind, val)
+                                {
+                                    $.each( val, function( i, v )
+                                    {
+
+                                            if(i == "RowNumber_InvtyCat")
+                                            {
+                                               // RowNumber_InvtyCatARR.push(val[i]);
+                                                
+                                                $('.getjsontest').append(val[i] + "  RowNumber_InvtyCatARR<br>");
+                                            }
+                                            else if(i == "SysPk_InvtyCat")
+                                            {
+                                               // SysPk_InvtyCatARR.push(val[i]);
+                                                $('.getjsontest').append(val[i] + "  SysPk_InvtyCatARR<br>");
+                                            }
+                                            else if(i == "SysFk_CatMstr_InvtyCat")
+                                            {
+                                              //  SysFk_CatMstr_InvtyCatARR.push(val[i]);
+                                                $('.getjsontest').append(val[i] + "  SysFk_CatMstr_InvtyCatARR<br>");
+                                            }
+                                            else if(i == "SKU_InvtyCat")
+                                            {
+                                               // SKU_InvtyCatARR.push(val[i]);
+                                                $('.getjsontest').append(val[i] + "  SKU_InvtyCatARR<br>");
+                                            }
+                                            else if(i == "PictureFileName_InvtyCat")
+                                            {
+                                                //PictureFileName_InvtyCatARR.push(val[i]);
+                                                $('.getjsontest').append('<img src="'+val[i]+'">  PictureFileName_InvtyCatARR<br>');
+                                            }
+                                            else if(i == "Barcode_InvtyCat")
+                                            {
+                                               // Barcode_InvtyCatARR.push(val[i]);
+                                                $('.getjsontest').append(val[i] + "  Barcode_InvtyCatARR<br>");
+
+                                            }
+                                            else if(i == "Brand_InvtyCat")
+                                            {
+                                                //Brand_InvtyCatARR.push(val[i]);
+                                                $('.getjsontest').append(val[i] + "  Brand_InvtyCatARR<br>");
+
+                                            }
+                                            else if(i == "FullDescription_InvtyCat")
+                                            {
+                                               //FullDescription_InvtyCatARR.push(val[i]);
+                                                $('.getjsontest').append(val[i] + "  FullDescription_InvtyCatARR<br>");
+
+                                            }
+                                            else if(i == "PromoName_InvtyCat")
+                                            {
+                                               //PromoName_InvtyCatARR.push(val[i]);
+                                                $('.getjsontest').append(val[i] + "  PromoName_InvtyCatARR<br>");
+
+                                            }
+                                            else if(i == "PromoPrice_InvtyCat")
+                                            {
+                                               //PromoPrice_InvtyCatARR.push(val[i]);
+                                                $('.getjsontest').append(val[i] + "  PromoPrice_InvtyCatARR<br>");
+
+                                            }
+
+
+
+                                    });	
+
+                                });	
+
+                            });
+                      });
+                $('.getjsontest').append("<br><br>---//NEW INVENTORY_MASTER_CATALOGUE----<br><br>");
+                    
+                    
+             
+                
+            }).then(function(objects){});
+    
+    
+}
 
 function onDeviceOnline()
 { 
  
-    if($('.splashpageindicator').length <= 0)//Only reload when not in splash page.
-    {
-        location.reload();
-    }
+  if($('.splashpageindicator').length <= 0)//Only reload when not in splash page.
+   {
+       location.reload();
+   }
    
  
   
     $('.noti-offline, .splashscreencont').hide();
-    $('.noti-blanket , .noti-online').show();
+   $('.noti-blanket , .noti-online').show();
+    
+
 
     if((networkstatus != 'connected' || networkstatus == ''))
     {
@@ -245,9 +347,11 @@ function onDeviceOnline()
                   ).done(function(invtycat, catmstr,settings,catgymstr,InvtyCatCatgy)
             {
 
-                if(SysPk_CatgyMstrARR.length <= 0)
-                {
+               if(SysPk_CatgyMstrARR.length <= 0)
+               {
                     
+                  
+                   
                  $('.getjsontest').append("<br><br>----INVENTORY_MASTER_CATALOGUE----<br><br>");
                     $.each( invtycat[0], function( index, value ) 
                       {
@@ -513,13 +617,9 @@ function onDeviceOnline()
 
                 $('.getjsontest').append("<br><br>---//INVENTORY_MASTER_CATALOGUE_CATEGORY----<br><br>");
     
-                
-                
-                
-                
+                           
                     
-                    
-               }//if(SysPk_CatgyMstrARR.length <= 0)
+              }//if(SysPk_CatgyMstrARR.length <= 0)
                 
             }).then(function(objects)
             {
@@ -546,7 +646,7 @@ $('.btn-noti-online').on('click',function()
 function createTBinventorymastercatalogue(tx)
 {
    
-
+    
   
    //alert('creating INVENTORY_MASTER_CATALOGUE if not exists');
 
@@ -646,8 +746,10 @@ function createTBinventorymastercataloguecategory(tx)
 
 function deleteLocalInvtyCat(tx)//delete in local what's deleted in server
 {
+    
+
    
-    if (RowNumber_InvtyCatARR.length <= 0)//isOffline
+    if(networkstatus == 'disconnected')//isOffline
     {
 
             var sqldeletedeleted = 'SELECT * FROM INVENTORY_MASTER_CATALOGUE LIMIT 1';//does not matter what statement is here. just to prevent error from executing null sql.
@@ -761,7 +863,7 @@ function rendercheckExistsInventoryMasterCatalogue(tx3,results)
 
 function deleteLocalCatalogueMaster(tx)
 {
-    if ( RowNumber_CatMstrARR.length <= 0 )//isOffline
+    if(networkstatus == 'disconnected')//isOffline
     {
         
        // alert('offline, not deleting anyuthing from cataloguemaster');
@@ -998,7 +1100,7 @@ function rendercheckExistsSettingsTable(tx5,results)
 function deleteLocalCategoryMaster(tx)
 {
    // alert('deleteLocalCategoryMaster');
-    if (RowNumber_CatgyMstrARR.length <= 0 )//isOffline
+    if(networkstatus == 'disconnected')//isOffline
     {
 
            // alert('offline, not deleting anything from category master');
@@ -1110,7 +1212,7 @@ function deleteLocalInvtyCatCatgy(tx)
 {
     
     // alert('deleteLocalCategoryMaster');
-    if ( RowNumber_InvtyCatCatgyARR.length <= 0 )//isOffline
+    if(networkstatus == 'disconnected')//isOffline
     {
          //   alert('offline, not deleting anything from invtycatcatgy');
             var sqldeletedeleted = 'SELECT * FROM INVENTORY_MASTER_CATALOGUE_CATEGORY LIMIT 1';//does not matter what statement is here. just to prevent error from executing null sql.
