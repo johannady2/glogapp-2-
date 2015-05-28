@@ -675,7 +675,13 @@ video#bgvid{
     left: 25%;
     right: 25%;
 }
-				/*Masonry Stuff*/
+
+.edit-order
+{
+	margin-top:15px;
+}
+
+							/*Masonry Stuff*/
                             #wrapper
                             {
                                 max-width: 60em; /* 960 px */

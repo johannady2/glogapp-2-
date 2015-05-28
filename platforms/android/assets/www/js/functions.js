@@ -1840,10 +1840,10 @@ function renderCartList(tx,results)
 				
                 
                 
-                htmlstringcart += '<div class="row cartItemCont"><div class="col-md-3 col-sm-3 col-xs-12">';
+                htmlstringcart += '<div class="col-md-12 col-sm-12 col-xs-12"><a href="#" class="edit-order pull-right" data-orderid="'+ ind +'">edit</a><div class="cleafix"></div></div><div class="row cartItemCont"><div class="col-md-3 col-sm-3 col-xs-12">';
                 
                 toNormalString(cartpicturefilenameArr[ind]);
-                htmlstringcart += '<img src="'+ returnedNormal+'" class="responsiveImage" alt="no image available"></div><div class="col-md-9 col-sm-9 col-xs-12"><div class="row"><div class="col-md-11 col-sm-11 col-xs-11">';
+                htmlstringcart += '<img src="'+ returnedNormal+'" class="responsiveImage" alt="no image available"></div><div class="col-md-9 col-sm-9 col-xs-12"><div class="row"><div class="col-md-12 col-sm-12 col-xs-12">';
 				
                 //commas are toNormal because this is for display
 				toNormalString(cartpromonameArr[ind]);
@@ -1860,7 +1860,7 @@ function renderCartList(tx,results)
                 
             
 				
-				htmlstringcart += '</div><div class="col-md-1 col-sm-1 col-xs-1"><a href="#" class="edit-order" data-orderid="'+ ind +'">edit</a></div></div></div><div class="col-md-12 col-sm-12 col-xs-12"><p class="pull-left">quantity: <span>'+cartQuantityArr[ind]+'</span></p><p class="pull-right">$<span>'+ cartsubtotalArr[ind] +'</span></p></div></div>' ;
+				htmlstringcart += '</div></div></div><div class="col-md-12 col-sm-12 col-xs-12"><p class="pull-left">quantity: <span>'+cartQuantityArr[ind]+'</span></p><p class="pull-right">$<span>'+ cartsubtotalArr[ind] +'</span></p></div></div>' ;
 
 
 				
@@ -1886,7 +1886,7 @@ function renderCartList(tx,results)
 			}
 			else
 			{
-				htmlstringcart +=  '<div class="row cartItemCont invalid"><div class="col-md-3 col-sm-3 col-xs-12"><img src="'+ cartpicturefilenameArr[ind]+'" class="responsiveImage" alt="no image available"></div><div class="col-md-9 col-sm-9 col-xs-12"><div class="row"><div class="col-md-11 col-sm-11 col-xs-11">';
+				htmlstringcart +=  '<div class="col-md-12 col-sm-12 col-xs-12"><a href="#" class="edit-order pull-right" data-orderid="'+ ind +'">edit</a></div><div class="row cartItemCont invalid"><div class="col-md-3 col-sm-3 col-xs-12"><img src="'+ cartpicturefilenameArr[ind]+'" class="responsiveImage" alt="no image available"></div><div class="col-md-9 col-sm-9 col-xs-12"><div class="row"><div class="col-md-12 col-sm-12 col-xs-12">';
                 
                 toNormalString(cartpromonameArr[ind]);
                 htmlstringcart += '<h2>'+returnedNormal+ '</h2>';
@@ -1902,7 +1902,7 @@ function renderCartList(tx,results)
 				toNormalString(cartcataloguetitleArr[ind]);
 				htmlstringcart +='<b>Catalogue :</b><span>'+returnedNormal+'</span></p>';
 				
-				htmlstringcart += '</div><div class="col-md-1 col-sm-1 col-xs-1"><a href="#" class="edit-order" data-orderid="'+ ind +'">edit</a></div></div></div><div class="col-md-12 col-sm-12 col-xs-12"><p class="pull-left">quantity: <span>'+cartQuantityArr[ind]+'</span></p><p class="pull-right">$<span>'+ cartsubtotalArr[ind] +'</span></p></div></div>' ;
+				htmlstringcart += '</div></div></div><div class="col-md-12 col-sm-12 col-xs-12"><p class="pull-left">quantity: <span>'+cartQuantityArr[ind]+'</span></p><p class="pull-right">$<span>'+ cartsubtotalArr[ind] +'</span></p></div></div>' ;
 
 			}
 
