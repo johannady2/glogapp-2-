@@ -1,0 +1,850 @@
+/*
+========= Place the UnderScoreS generated Text Description Here
+*/
+
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 - Font Face/ Google Font 
+2.0 - Links
+3.0 - Accessibility
+4.0 - Alignments
+5.0 - Widgets
+6.0 - Content
+	6.1 - Posts and pages
+	6.2 - Asides
+	6.3 - Comments
+7.0 - Infinite scroll
+8.0 - Media
+9.0 - Page Layout (Author Styles proceed here) <<<<
+10.0 - Misc
+11.0 - Media Queries
+--------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+1.0 Font Face/ Google Font
+------------------------------------------------------------- */
+
+/* Place your @import google font or font face here */
+
+
+
+/*--------------------------------------------------------------
+2.0 Links
+--------------------------------------------------------------*/
+a {
+	color: royalblue;
+}
+
+a:visited {
+	color: purple;
+}
+
+a:hover,
+a:focus,
+a:active {
+	color: midnightblue;
+}
+
+a:focus {
+	outline: thin dotted;
+}
+
+a:hover,
+a:active {
+	outline: 0;
+}
+
+/*--------------------------------------------------------------
+3.0 Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
+}
+
+
+/*--------------------------------------------------------------
+4.0 Alignments
+--------------------------------------------------------------*/
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+/*--------------------------------------------------------------
+5.0 Widgets
+--------------------------------------------------------------*/
+.widget {
+	margin: 0 0 1.5em;
+}
+
+/* Make sure select elements fit in widgets */
+.widget select {
+	max-width: 100%;
+}
+
+/* Search widget */
+.widget_search .search-submit {
+	display: none;
+}
+
+/*--------------------------------------------------------------
+6.0 Content
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+6.1 Posts and pages
+--------------------------------------------------------------*/
+.sticky {
+	display: block;
+}
+
+.hentry {
+	margin: 0 0 1.5em;
+}
+
+.byline,
+.updated:not(.published) {
+	display: none;
+}
+
+.single .byline,
+.group-blog .byline {
+	display: inline;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	margin: 1.5em 0 0;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+
+/*--------------------------------------------------------------
+6.2 Asides
+--------------------------------------------------------------*/
+.blog .format-aside .entry-title,
+.archive .format-aside .entry-title {
+	display: none;
+}
+
+/*--------------------------------------------------------------
+6.3 Comments
+--------------------------------------------------------------*/
+.comment-content a {
+	word-wrap: break-word;
+}
+
+.bypostauthor {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+7.0 Infinite scroll
+--------------------------------------------------------------*/
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .paging-navigation, /* Older / Newer Posts Navigation (always hidden) */
+.infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
+	display: none;
+}
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before */
+.infinity-end.neverending .site-footer {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+8.0 Media
+--------------------------------------------------------------*/
+.page-content img.wp-smiley,
+.entry-content img.wp-smiley,
+.comment-content img.wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+/* Make sure embeds and iframes fit their containers */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin: 0 auto;
+}
+
+.wp-caption-text {
+	text-align: center;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+}
+
+.gallery {
+	margin-bottom: 1.5em;
+}
+
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	max-width: 11.11%;
+}
+
+.gallery-caption {
+	display: block;
+}
+
+
+/*--------------------------------------------------------------
+9.0 Page Layout (Author Styles proceed here)
+--------------------------------------------------------------*/
+
+body {
+	/* Place your body style here */
+}
+
+/* Please specify your container width here. e.g. 978px (PSD width) + 30px (15px left & 15px right - bootstrap gutter) =  1008px
+.container {
+	max-width: 1008px;
+}*/
+
+
+/* This is for NON-Responsive Container ==
+.container {
+	max-width: none !important;
+	width: 1008px; 
+}*/
+
+
+/* Navbar override styles here */
+
+
+
+/*--------------------------------------------------------------
+10.0 Misc - Place your modifier's here
+--------------------------------------------------------------*/
+.half-bottom {margin-bottom: 10px;}
+.half-top {margin-top: 10px;}
+.add-bottom {margin-bottom: 20px;}
+.add-top {margin-top: 20px;}
+
+.nodisplay {display: none;}
+/* bootstrap override*/
+
+article .page-header
+{
+    margin: 0px 0px 20px;
+}
+
+article .entry-title
+{
+    margin: 0px;
+}
+
+
+.navbar-default
+{
+    background-color: rgb(108, 179, 62);
+    border: 0px none;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover
+{
+    color: rgb(255, 255, 255);
+    background-color: rgb(83, 134, 49);
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover
+{
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+}
+
+.navbar-default .navbar-brand
+{
+    color: rgb(255, 255, 255);
+}
+
+.navbar-default .navbar-nav > li > a
+{
+    color: rgb(255, 255, 255);
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover
+{
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+}
+
+
+.btn-success
+{
+     background-color: rgb(108, 179, 62);
+}
+
+
+.btn-success:active
+{
+    background-color: rgb(83, 134, 49);
+    
+}
+
+.entry-title
+{
+ white-space:normal;
+}
+/*//bootstrap override*/
+body
+{
+    background-color: rgb(233, 233, 233);
+}
+.content-cont
+{
+    margin-top:60px;
+    margin-bottom: 60px;
+
+}
+
+
+
+.img-container
+{
+    background-image: url("../img/default-product-image.jpg");
+    background-repeat: no-repeat;
+    min-width: 100%;
+    min-height: auto;
+    background-size: 100% auto;
+}
+
+.responsiveImage
+{
+    width:100%;
+}
+
+
+.viewItem , .addToList,.addToCart , .saveChanges , .removeFromCart , .SearchBtn
+{
+    width:100%;
+    min-height:50px;
+    font-size:25px;
+    
+}
+
+.orderAll 
+{
+    width:60%;
+    min-height:60px;
+    font-size:30px;
+    margin: 10px auto 0 auto;
+    display:block;
+}
+
+
+.btn-noti-offline:visited,
+.btn-noti-online:visited,
+.viewItem:visited,
+.addToList:visited,
+.addToCart:visited,
+.saveChanges:visited,
+.removeFromCart:visited,
+.orderAll:visited,
+.SearchBtn:visited,
+.orderAllAgree:visited,
+.orderAllCancel:visited,
+.addToCartAgree:visited,
+.addToCartCancel:visited
+{
+    color:#ffffff;
+}
+.SearchBtn
+{
+	margin-top:10px;
+}
+
+.orderAllDisabledLook ,.orderAllDisabledLook:visited, .orderAllDisabledLook:active
+{
+    color:#ffffff;
+    width:60%;
+    min-height:60px;
+    font-size:30px;
+    margin: 10px auto;
+    display:block;
+    background-color:darkgrey;
+}
+
+.orderAllAreaNote
+{
+    color:#ffffff;
+    width:60%;
+    margin: 0 auto 12px auto;
+    display: block;
+    
+}
+
+
+
+
+.rightmenu
+{
+    padding-right:15px;
+}
+
+.splashscreen-logo
+{
+    color:#ffffff;
+}
+.splashscreencont
+{
+    display:none;
+    text-align:center;
+}
+
+.scanbtn
+{
+    display:none;
+}
+
+
+
+.totalcounter
+{ 
+    width:100%;
+}
+
+.forsingleonly , .foreditorderonly
+{
+    display:none;
+    padding-left:15px;
+}
+
+.cartItemCont
+{
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 27px 20px;
+    border-bottom: 1px solid #DADADA;
+    margin-bottom:20px;
+}
+
+.clearfix
+{
+    clear:both;
+}
+
+.oneitemarticle
+{
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 27px 20px;
+    border-bottom: 1px solid #DADADA;
+}
+
+.ItemNote
+{
+    color: rgb(83, 134, 49);
+}
+
+.orderAll-row
+{
+    background-color:#171717;
+    position:fixed;
+    bottom:0px;
+    padding:0px 0px 10px 0px;
+    margin:0px;
+    width:100%;
+    left:0px;
+    z-index:100;
+    
+}
+
+.spaceformenu
+{
+    display:block;
+    width:100%;
+    height:120px;
+}
+
+
+.catalogueTitle-cont
+{
+	
+	display:block;
+	width:100%;
+	margin:100px 0 30px 0;
+	
+}
+
+.catalogueTitle-cont:first-child
+{
+	margin:30px 0 30px 0;
+}
+
+.catalogueTitle 
+{
+    text-align:center;
+	font-weight:bold;
+    margin: 0 auto;
+    width:100%;
+    display:block;
+}
+
+.catalogueTitle-cont small
+{
+    width:100%;
+    text-align:center;
+    margin: 0 auto 30px auto;
+   display:block;
+    
+}
+
+.invalid
+{
+	background-color:#F0f0f0 !important;
+}
+
+
+.warning
+{
+	color:red;
+}
+
+.hidethis
+{
+	display:none;
+}
+
+.searchtable
+{
+	width:100%;
+}
+
+.searchtable input[type="text"]
+{
+	width:100%;
+	border-radius:3px;
+	border: 0px;
+}
+
+
+
+
+
+video#bgvid{
+	max-width:100%;
+	max-height:100%;
+	width:100%;
+	height:auto;
+/*background: url('img/videoimage.jpg') no-repeat top center; 
+	background-size:cover;
+	 -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;*/
+}
+
+
+
+.noti
+{
+  display:none;
+  background-color: rgba(255, 255, 255,1);
+  width: 38%;
+  padding: 2%;
+  border-radius: 5px;
+  color: #000000;
+  z-index: 10000000;
+  position: fixed;
+  top: 20%;
+  left: 29%;
+  right: 29%;
+
+}
+
+.noti-blanket
+{
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+  display: block;
+  top: 0px;
+  position: fixed;
+  left: 0px;
+  z-index: 9999;
+}
+
+.advcSrch
+{
+    display:none;
+}
+
+
+.splashtitleandstuff
+{
+    position: absolute;
+    margin: 0 auto;
+    width: 25%;
+    display: block;
+    left: 25%;
+    right: 25%;
+}
+
+.edit-order
+{
+	margin-top:15px;
+}
+
+							/*Masonry Stuff*/
+                            #wrapper
+                            {
+                                max-width: 60em; /* 960 px */
+                                margin: 0 auto;
+                            }
+                            .list
+                            {
+                               
+                                width: 100%;
+                                overflow: hidden;
+                                margin-bottom: -1.875em; /* 30px */
+                                -webkit-column-count: 3;
+                                -webkit-column-gap: 1.875em; /* 30px */
+                                -webkit-column-fill: auto;
+                                -moz-column-count: 3;
+                                -moz-column-gap: 1.875em; /* 30px */
+                                -moz-column-fill: auto;
+                                column-count: 3;
+                                column-gap: 1.875em; /* 30px */
+                                column-fill: auto;	
+								
+                            }
+                                .item
+                                {
+                                    margin-bottom: 1.875em; /* 15px 30px */
+                                    -webkit-column-break-inside: avoid;
+                                    -moz-column-break-inside: avoid;
+                                    column-break-inside: avoid;
+
+                                }
+
+                            @media only screen and ( max-width: 40em ) /* 640px */
+                            {
+                                .list
+                                {
+                                    -webkit-column-count: 2;
+                                    -webkit-column-gap: 0.938em; /* 15px */
+                                    -moz-column-count: 2;
+                                    -moz-column-gap: 0.938em; /* 15px */
+                                    column-count: 2;
+                                    column-gap: 0.938em; /* 15px */
+                                }
+                                    .item
+                                    {
+                                        margin-bottom: 0.938em; /* 15px */
+                                    }
+                            }
+                            @media only screen and ( max-width: 20em ) /* 320px */
+                            {
+                                .list
+                                {
+                                    -webkit-column-count: auto;
+                                    -moz-column-count: auto;
+                                    column-count: auto;
+                                }
+                            }
+                            /*//Masonry Stuff*/
+
+/*--------------------------------------------------------------
+11.0 Media Queries
+--------------------------------------------------------------*/
+
+@media screen and (min-width: 75em) {
+	/* width 1200px up */
+}
+
+
+@media only screen and (min-width: 62px) and (max-width: 75em) {
+	/* 992px and 1200px */
+}
+
+
+@media screen and (max-width: 61.938em) {
+	/* width: 991px; */
+}
+
+
+@media screen and (max-width: 48em) {
+	/* width 768px */
+    
+    .rightmenu
+    {
+        padding-right: 0px;
+    }
+    
+          .addToCart , .addToList
+    {
+        font-size: 15px;
+        min-height: 35px;
+        font-weight:bold;
+    }
+    
+    
+    .artcont h1.entry-title
+    {
+        font-size:20px;
+       
+    }
+    
+    .artcont h3.entry-title
+    {
+        font-size:15px;
+        font-weight:bold;
+    }
+    
+    .noti
+    {
+     
+      width: 70%;
+      padding: 6%;
+      border-radius: 5px;
+      top: 20%;
+      left: 15%;
+      right: 15%;
+    }
+    
+    
+    .splashtitleandstuff
+    {
+       
+        width: 88%;
+        display: block;
+        left: 6%;
+        right: 6%;
+    }
+    
+    
+    .orderAll 
+    {
+        font-size: 15px;
+        min-height: 35px;
+        font-weight:bold;
+        width:80%;
+        margin: 10px auto 0 auto;
+        display:block;
+    }
+    
+    
+    .orderAllAreaNote
+    {
+
+        width:80%;
+        margin: 0 auto 12px auto;
+
+    }
+
+    
+    .viewItem , .addToList,.addToCart , .saveChanges , .removeFromCart , .SearchBtn
+    {
+        width:100%;
+        font-weight:bold;
+        min-height:35px;
+        font-size:15px;
+
+    }
+
+}
+
+
+@media screen and (max-width: 30em) {
+	/* width 480px */
+    
+      
+
+
+}
