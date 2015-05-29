@@ -1,0 +1,17 @@
+{
+    "version": "1.5.3",
+    "name": "com.manateeworks.barcodescanner",
+    "cordova_name": "MWBarcodeScanner",
+    "description": "Manateeworks Barcode Scanner Plugin",
+    "license": "MIT",
+    "keywords": [
+        "phonegap",
+        "barcode"
+    ],
+    "platforms": [
+        "android",
+        "ios",
+        "wp8"
+    ],
+    "engines": []
+}

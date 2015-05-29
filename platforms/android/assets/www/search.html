@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-md-5 col-sm-5 col-xs-12">
+		<h1>Filtered Search</h1>
+        <form method="post" id="searchForm">
+			<table class="searchtable">
+				
+				<tr>
+					<td><label>Product Name: &nbsp; </label></td><td><input type="text" name="search-promoname" required="required"></td>
+				</tr>
+                <tr>
+					<td><label>Brand: &nbsp; </label></td><td><input type="text" name="search-brand" required="required"></td>
+				</tr>
+
+                <tr class="advcSrch">
+					<td><label>Barcode: &nbsp; </label></td><td><input type="text" name="search-barcode" required="required"></td>
+				</tr>
+                <tr class="advcSrch">
+					<td><label>Description: &nbsp; </label></td><td><input type="text" name="search-fulldescription" required="required"></td>
+				</tr>
+
+                <tr class="advcSrch">
+					<td><label>Catalogue:</label></td><td><select class="search-catalogue" required="required"><option value="">All</option></select></td>
+				</tr>
+				<tr class="advcSrch">
+					<td><label>Category:</label></td><td><select class="search-category" required="required"><option value="">All</option></select></td>
+				</tr>
+			</table>
+            <input type="submit" value="search" class="btn btn-success SearchBtn">
+           <br><br>
+             <a href="#" class="advcSrchBtn">Toggle Advanced Search Options</a>
+           
+        </form>
+    </div>
+
+	<div class="col-md-7 col-sm-7 col-xs-12">
+		
+		 <div class="row" id="itemsList">
+            
+        </div>
+	</div>
+</div>
