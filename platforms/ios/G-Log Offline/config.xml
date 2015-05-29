@@ -31,7 +31,7 @@
     </feature>
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
-    <name>glogapp</name>
+    <name>G-Log Offline</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>

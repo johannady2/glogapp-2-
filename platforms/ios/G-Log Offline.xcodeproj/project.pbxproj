@@ -83,7 +83,7 @@
 /* Begin PBXFileReference section */
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* glogapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "glogapp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* G-Log Offline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "G-Log Offline.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F766FDD13BBADB100FB74C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		1F766FE013BBADB100FB74C0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Localizable.strings; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -108,7 +108,7 @@
 		30B4F2FF19D5E07200D9F7D8 /* Default-Landscape-736h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape-736h.png"; sourceTree = "<group>"; };
 		30C1856519D5FC0A00212699 /* icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-60@3x.png"; sourceTree = "<group>"; };
 		30FC414816E50CA1004E6F35 /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* glogapp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "glogapp-Prefix.pch"; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* G-Log Offline-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "G-Log Offline-Prefix.pch"; sourceTree = "<group>"; };
 		5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		7E7966D41810823500FA85AD /* icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40.png"; sourceTree = "<group>"; };
 		7E7966D51810823500FA85AD /* icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-40@2x.png"; sourceTree = "<group>"; };
@@ -120,12 +120,12 @@
 		7E7966DB1810823500FA85AD /* icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76@2x.png"; sourceTree = "<group>"; };
 		7E7966DC1810823500FA85AD /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small.png"; sourceTree = "<group>"; };
 		7E7966DD1810823500FA85AD /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small@2x.png"; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* glogapp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "glogapp-Info.plist"; path = "../glogapp-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* G-Log Offline-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "G-Log Offline-Info.plist"; path = "../G-Log Offline-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		EB87FDF21871DA7A0020F90C /* merges */ = {isa = PBXFileReference; lastKnownFileType = folder; name = merges; path = ../../merges; sourceTree = "<group>"; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
-		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "glogapp/config.xml"; sourceTree = "<group>"; };
+		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "G-Log Offline/config.xml"; sourceTree = "<group>"; };
 		CD8D0D76508E4EAA9389D118 /* CDVNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVNotification.m"; path = "org.apache.cordova.dialogs/CDVNotification.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		78842FAF4D08473E9D41D250 /* CDVNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVNotification.h"; path = "org.apache.cordova.dialogs/CDVNotification.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		444FB712A63541868CD79144 /* CDVNotification.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "CDVNotification.bundle"; path = "Resources\CDVNotification.bundle"; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		0CCE8E5436AB4F27B0EB827D /* MWOverlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MWOverlay.m"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/MWOverlay.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		E34EC89937494C45BED83AF8 /* MWResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MWResult.m"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/MWResult.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		1E44B582EAEB42FE95E47663 /* MWScannerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MWScannerViewController.xib"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/MWScannerViewController.xib"; sourceTree = "<group>"; fileEncoding = 4; };
-		E6C0D34DFEF144DDB9237FD7 /* libBarcodeScanner.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libBarcodeScanner.a"; path = "glogapp\Plugins\com.manateeworks.barcodescanner\MWBarcodeScanner\libBarcodeScanner.a"; sourceTree = "<group>"; fileEncoding = 4; };
+		E6C0D34DFEF144DDB9237FD7 /* libBarcodeScanner.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libBarcodeScanner.a"; path = "G-Log Offline\Plugins\com.manateeworks.barcodescanner\MWBarcodeScanner\libBarcodeScanner.a"; sourceTree = "<group>"; fileEncoding = 4; };
 		E6300C8A842B43218A6936DD /* CDVMWBarcodeScanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVMWBarcodeScanner.h"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/CDVMWBarcodeScanner.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		89BC8754B5FB4B50B87E6EF0 /* BarcodeScanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "BarcodeScanner.h"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/BarcodeScanner.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		6D95BC750EC24220BC7A4E6E /* MWScannerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MWScannerViewController.h"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/MWScannerViewController.h"; sourceTree = "<group>"; fileEncoding = 4; };
@@ -190,13 +190,13 @@
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
 			);
 			name = Classes;
-			path = "glogapp/Classes";
+			path = "G-Log Offline/Classes";
 			sourceTree = SOURCE_ROOT;
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* glogapp.app */,
+				1D6058910D05DD3D006BFB54 /* G-Log Offline.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -222,11 +222,11 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* glogapp-Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* G-Log Offline-Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
-			path = "glogapp";
+			path = "G-Log Offline";
 			sourceTree = "<group>";
 		};
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
@@ -234,7 +234,7 @@
 			children = (
 				308D052D1370CCF300D202BF /* icons */,
 				308D05311370CCF300D202BF /* splash */,
-				8D1107310486CEB800E47090 /* glogapp-Info.plist */,
+				8D1107310486CEB800E47090 /* G-Log Offline-Info.plist */,
 				444FB712A63541868CD79144 /* CDVNotification.bundle */,
 				555233C317854B2F865F7D0A /* close_button.png */,
 				869146E1F7574AD3BB269087 /* flashbuttonon.png */,
@@ -244,7 +244,7 @@
 				64DEEE8313684EC2BDF4C641 /* zoom.png */,
 			);
 			name = Resources;
-			path = "glogapp/Resources";
+			path = "G-Log Offline/Resources";
 			sourceTree = "<group>";
 		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
@@ -295,7 +295,7 @@
 				9427D08B0B2D40409B5FA542 /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
-			path = "glogapp/Plugins";
+			path = "G-Log Offline/Plugins";
 			sourceTree = SOURCE_ROOT;
 		};
 		308D052D1370CCF300D202BF /* icons */ = {
@@ -349,9 +349,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* glogapp */ = {
+		1D6058900D05DD3D006BFB54 /* G-Log Offline */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "glogapp" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "G-Log Offline" */;
 			buildPhases = (
 				304B58A110DAC018002A0835 /* Copy www directory */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
@@ -363,9 +363,9 @@
 			dependencies = (
 				301BF551109A68C00062928A /* PBXTargetDependency */,
 			);
-			name = "glogapp";
-			productName = "glogapp";
-			productReference = 1D6058910D05DD3D006BFB54 /* glogapp.app */;
+			name = "G-Log Offline";
+			productName = "G-Log Offline";
+			productReference = 1D6058910D05DD3D006BFB54 /* G-Log Offline.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -400,7 +400,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* glogapp */,
+				1D6058900D05DD3D006BFB54 /* G-Log Offline */,
 			);
 		};
 /* End PBXProject section */
@@ -517,10 +517,10 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "glogapp/glogapp-Prefix.pch";
+				GCC_PREFIX_HEADER = "G-Log Offline/G-Log Offline-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
-				INFOPLIST_FILE = "glogapp/glogapp-Info.plist";
+				INFOPLIST_FILE = "G-Log Offline/G-Log Offline-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
@@ -534,11 +534,11 @@
 					"-weak-lSystem",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "glogapp";
+				PRODUCT_NAME = "G-Log Offline";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/glogapp/Plugins/com.manateeworks.barcodescanner/MWBarcodeScanner\"",
+					"\"$(SRCROOT)/G-Log Offline/Plugins/com.manateeworks.barcodescanner/MWBarcodeScanner\"",
 				);
 			};
 			name = Debug;
@@ -550,10 +550,10 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "glogapp/glogapp-Prefix.pch";
+				GCC_PREFIX_HEADER = "G-Log Offline/G-Log Offline-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
-				INFOPLIST_FILE = "glogapp/glogapp-Info.plist";
+				INFOPLIST_FILE = "G-Log Offline/G-Log Offline-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
@@ -567,11 +567,11 @@
 					"-weak-lSystem",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "glogapp";
+				PRODUCT_NAME = "G-Log Offline";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/glogapp/Plugins/com.manateeworks.barcodescanner/MWBarcodeScanner\"",
+					"\"$(SRCROOT)/G-Log Offline/Plugins/com.manateeworks.barcodescanner/MWBarcodeScanner\"",
 				);
 			};
 			name = Release;
@@ -666,7 +666,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "glogapp" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "G-Log Offline" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
