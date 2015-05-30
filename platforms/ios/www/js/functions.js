@@ -1476,7 +1476,7 @@ function renderCatalogueItems(tx2,results)
             htmlstringCatalaogue += '<h1 class="entry-title">' + results.rows.item(ind).PromoName_InvtyCat +'</h1>';
             htmlstringCatalaogue += '<h4 class="entry-title">' + results.rows.item(ind).Brand_InvtyCat +'</h4>';
             htmlstringCatalaogue += '</div><div class="col-md-4 col-sm-12 col-xs-12">';
-            htmlstringCatalaogue += '<h3 class="entry-title">$'+ results.rows.item(ind).PromoPrice_InvtyCat +'</h1>';
+            htmlstringCatalaogue += '<h3 class="entry-title">₱'+ results.rows.item(ind).PromoPrice_InvtyCat +'</h1>';
             htmlstringCatalaogue += '</div></div></header>';
             htmlstringCatalaogue += '<div class="entry-content"><div class="row"><div class="col-md-12 col-sm-12 col-xs-12"><div class="img-container">';
             htmlstringCatalaogue += '<img src="'+ results.rows.item(ind).PictureFileName_InvtyCat +'" class="responsiveImage">';
@@ -1856,7 +1856,7 @@ function renderCartList(tx,results)
                 
             
 				
-				htmlstringcart += '</div></div></div><div class="col-md-12 col-sm-12 col-xs-12"><p class="pull-left">quantity: <span>'+cartQuantityArr[ind]+'</span></p><p class="pull-right">$<span>'+ cartsubtotalArr[ind] +'</span></p></div></div>' ;
+				htmlstringcart += '</div></div></div><div class="col-md-12 col-sm-12 col-xs-12"><p class="pull-left">quantity: <span>'+cartQuantityArr[ind]+'</span></p><p class="pull-right">₱<span>'+ cartsubtotalArr[ind] +'</span></p></div></div>' ;
 
 
 				
@@ -1898,7 +1898,7 @@ function renderCartList(tx,results)
 				toNormalString(cartcataloguetitleArr[ind]);
 				htmlstringcart +='<b>Catalogue :</b><span>'+returnedNormal+'</span></p>';
 				
-				htmlstringcart += '</div></div></div><div class="col-md-12 col-sm-12 col-xs-12"><p class="pull-left">quantity: <span>'+cartQuantityArr[ind]+'</span></p><p class="pull-right">$<span>'+ cartsubtotalArr[ind] +'</span></p></div></div>' ;
+				htmlstringcart += '</div></div></div><div class="col-md-12 col-sm-12 col-xs-12"><p class="pull-left">quantity: <span>'+cartQuantityArr[ind]+'</span></p><p class="pull-right">₱<span>'+ cartsubtotalArr[ind] +'</span></p></div></div>' ;
 
 			}
 
