@@ -116,7 +116,7 @@ MWBSInitSpace.callback = function(result){
         if (result && result.code){
             //navigator.notification.alert(result.code, function(){}, result.type, 'Close');
 			scanResult = result.code;
-          alert(scanResult);
+         // alert(scanResult);
             
          
             doneScanning(event,scanResult);
