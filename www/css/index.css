@@ -619,15 +619,29 @@ body
 
 
 video#bgvid{
-	max-width:100%;
+/*	max-width:100%;
 	max-height:100%;
 	width:100%;
 	height:auto;
-/*background: url('img/videoimage.jpg') no-repeat top center; 
+background: url('img/videoimage.jpg') no-repeat top center; 
 	background-size:cover;
 	 -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;*/
+   background: transparent url('../img/videoimage.jpg') 50% 50% / cover no-repeat ;
+     -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
 }
 
 

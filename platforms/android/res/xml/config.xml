@@ -20,6 +20,16 @@
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
     </feature>
+    <feature name="Html5Video">
+        <param name="android-package" value="org.apache.cordova.plugin.Html5Video" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
     <allow-intent href="market:*" />
     <name>G-Log Offline</name>
     <description>
@@ -29,6 +39,8 @@
         Apache Cordova Team
     </author>
     <content src="index.html" />
+    <preference name="Fullscreen" value="true" />
+    <preference name="Orientation" value="portrait" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

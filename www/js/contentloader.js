@@ -5,13 +5,16 @@
        var defaultContent = 'splash.html';     
          $(".content-cont").load(defaultContent,  null, function(event,filename)
          {
+			 
+			 
+			 
 			 $('.site-content').removeClass('container');
              $('body').css('background-image', 'url(' + '"img/splashbg.jpg"' + ')');
 			 $('.content-cont').css( 'marginTop','0px' );
     		 $('.content-cont').css('marginBottom', '0px' );
+			 $('body').bind('touchmove', function(e){e.preventDefault()});
 			
 
-			 
 			 
              $(".slideToUnlock").on('click',function()
              {
@@ -20,7 +23,7 @@
                  $('body').css('background-image', 'none');
 				  $('.content-cont').css('marginTop','60px');
 				$('.content-cont').css('marginBottom','60px');
-
+				 jQuery('body').unbind('touchmove');
 			 
 			 
 				 

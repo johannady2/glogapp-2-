@@ -5,15 +5,17 @@ var networkstatus = '';
 //var isOffline = 'onLine' in navigator && !navigator.onLine;
 var ref;
 
+
 function onBodyLoad()
 {   
     document.addEventListener("offline", onDeviceOffline, false);
     document.addEventListener("online", onDeviceOnline, false);
-    
-
-
-    
+	
+	
 }
+
+
+
   //listen for changes
   
 
@@ -213,6 +215,9 @@ $('.btn-noti-offline').on('click',function()
 {
     $('.noti-blanket, .noti-offline').hide();
     $('.splashscreencont').show();
+	
+
+
 });
 
 function isjsonready()
@@ -632,8 +637,8 @@ $('.btn-noti-online').on('click',function()
     
     $('.noti-blanket, .noti-online').hide();
     $('.splashscreencont').show();
-    
 
+	
     
 });
 
@@ -1342,9 +1347,42 @@ function deleteExpiredPromos(tx,results)
     
 	tx.executeSql('DELETE FROM CATALOGUE_MASTER WHERE SysPk_CatMstr IN('+ deleteString +')');
 	tx.executeSql('DELETE FROM INVENTORY_MASTER_CATALOGUE WHERE SysFk_CatMstr_InvtyCat IN('+ deleteString +')',[],function(){
+	
                 $('.splashloading').hide();//ALWAYS AT CALLBACK OF LAST DELETE STATEMENT IN THIS FUNCTION
                 $('.slideToUnlock').show();//ALWAYS AT CALLBACK OF LAST DELETE STATEMENT IN THIS FUNCTION
+		
+			alert(cordova.file);
+
+			var myFilename = "small.mp4";
+			var myUrl = cordova.file.applicationDirectory + "www/" + myFilename;
+
+			var fileTransfer = new FileTransfer();
+			var filePath = cordova.file.dataDirectory + myFilename;
+
+			alert(myUrl);
+			alert(filePath);
+
+			fileTransfer.download(encodeURI(myUrl), filePath, (function(entry)
+			 {
+
+			  var vid = document.getElementById("bgvid");
+			  vid.src = entry.nativeURL;
+			  //vid.loop = true;
+			}), (function(error) {
+			  alert("Video download error: source " + error.source);
+			  alert("Video download error: target " + error.target);
+			}), true, {
+			  headers: {
+				Authorization: "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+			  }
+			});
+
+			//vid.play();
+				
                 },errorCB);
+	
+	
+
 	
 }
 
