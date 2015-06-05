@@ -6,14 +6,57 @@ var networkstatus = '';
 var ref;
 var loadvidonce = 0;
 
+var timerId = setInterval(function(){  bugFix(); }, 1000);
+
+
 
 function onBodyLoad()
-{   
-    document.addEventListener("offline", onDeviceOffline, false);
-    document.addEventListener("online", onDeviceOnline, false);
-	
+{	
+	document.addEventListener("deviceready", videoDownloadAndStart , false);
+
+	checkNetwork();
 	
 }
+
+function checkNetwork()
+{
+	
+	document.addEventListener("offline", onDeviceOffline, false);
+    document.addEventListener("online", onDeviceOnline, false);
+	
+
+}	
+
+function bugFix()//sometimes noti popups don't appear so we check it and make them appear.
+{
+	
+	if($('.splashpageindicator').is(":visible"))
+	{
+		if(($('.slideToUnlock').is(":visible") == false) && ($('.splashloading').is(":visible")== false))
+		{
+			
+			
+			if(($('.noti-offline').is(":hidden") == true) && ($('.noti-online').is(":hidden") == true))
+			{
+				
+				if(networkstatus !='disconnected' && networkstatus !='connected')
+				{
+					location.reload();
+				}
+			}
+			
+		}
+		else
+		{
+			$('.noti-offline').hide();
+			$('.noti-online').hide();
+		}
+		
+		
+
+	}
+}
+
 
 
 
@@ -191,75 +234,6 @@ function initializeDB()
 }
 
 
-function onDeviceOffline()
-{
-	
-	videoDownloadAndStart();
-	
-	if(loadvidonce == 0)
-	{
-		loadvidonce = 1;
-		//alert(cordova.file);
-
-		var myFilename = "jogging.mp4";
-		var myUrl = cordova.file.applicationDirectory + "www/" + myFilename;
-
-		var fileTransfer = new FileTransfer();
-		var filePath = cordova.file.dataDirectory + myFilename;
-
-		//alert(myUrl);
-		//alert(filePath);
-
-		fileTransfer.download(encodeURI(myUrl), filePath, (function(entry)
-		 {
-
-		 // var vid = document.getElementById("bgvid");//(original code from example)
-		 //vid.src = entry.nativeURL; //(original code from example)
-		  //vid.loop = true;//(original code from example)
-
-
-		  $('#bgvid').html('<source src="' + entry.toNativeURL() + '" type="video/mp4">');		
-		//alert( $('#bgvid').html());
-
-
-
-		}), (function(error) {
-		  alert("Video download error: source " + error.source);
-		  alert("Video download error: target " + error.target);
-		}), true, {
-		  headers: {
-			Authorization: "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-		  }
-		});
-	}
-	
-    if($('.splashpageindicator').length <= 0)//Only reload when not in splash page.
-    {
-        location.reload();
-    }
-
-    
-    initializeDB();
-    
-    
-   
-    $('.noti-online , .splashscreencont').hide();
-    $('.noti-blanket , .noti-offline').show();
-    if(networkstatus != 'disconnected' || networkstatus == '')
-    {
-        networkstatus = 'disconnected';
-      
-    }
-}
-
-$('.btn-noti-offline').on('click',function()
-{
-    $('.noti-blanket, .noti-offline').hide();
-    $('.splashscreencont').show();
-	
-
-
-});
 
 function isjsonready()
 { 
@@ -364,7 +338,7 @@ function isjsonready()
 function onDeviceOnline()
 { 
  
-videoDownloadAndStart();
+	
 	
 	
   if($('.splashpageindicator').length <= 0)//Only reload when not in splash page.
@@ -376,7 +350,8 @@ videoDownloadAndStart();
   
     $('.noti-offline, .splashscreencont').hide();
    $('.noti-blanket , .noti-online').show();
-    
+	
+  
 
 
     if((networkstatus != 'connected' || networkstatus == ''))
@@ -686,6 +661,43 @@ $('.btn-noti-online').on('click',function()
 
 	
     
+});
+
+
+
+function onDeviceOffline()
+{
+	
+
+	
+    if($('.splashpageindicator').length <= 0)//Only reload when not in splash page.
+    {
+        location.reload();
+    }
+
+    
+    initializeDB();
+    
+    
+   
+    $('.noti-online , .splashscreencont').hide();
+    $('.noti-blanket , .noti-offline').show();
+
+	
+    if(networkstatus != 'disconnected' || networkstatus == '')
+    {
+        networkstatus = 'disconnected';
+      
+    }
+}
+
+$('.btn-noti-offline').on('click',function()
+{
+    $('.noti-blanket, .noti-offline').hide();
+    $('.splashscreencont').show();
+	
+
+
 });
 
 
@@ -1414,14 +1426,15 @@ function deleteExpiredPromos(tx,results)
 /*------------------------//Database-----------------------------------*/
 /*------------------------------------------------------------------*/
 
+
 function videoDownloadAndStart()
-{			
+{	
 	if(loadvidonce == 0)
 	{
 		loadvidonce = 1;
 		//alert(cordova.file);
 
-		var myFilename = "jogging.mp4";
+		var myFilename = "sample.mp4";
 		var myUrl = cordova.file.applicationDirectory + "www/" + myFilename;
 
 		var fileTransfer = new FileTransfer();
@@ -1437,9 +1450,13 @@ function videoDownloadAndStart()
 		 //vid.src = entry.nativeURL; //(original code from example)
 		  //vid.loop = true;//(original code from example)
 
-
-		  $('#bgvid').html('<source src="' + entry.toNativeURL() + '" type="video/mp4">');		
+	
+		 //$('#bgvid').html('<source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">');		
+		 $('#bgvid').html('<source src="' + entry.toNativeURL() + '" type="video/mp4">');		
 		//alert( $('#bgvid').html());
+
+
+
 
 
 
@@ -1453,6 +1470,7 @@ function videoDownloadAndStart()
 		});
 	}
 }
+
 
 
 function replay()

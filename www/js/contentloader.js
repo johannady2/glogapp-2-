@@ -18,6 +18,7 @@
 			 
              $(".slideToUnlock").on('click',function()
              {
+				clearInterval(timerId);
 				 
 				$('.site-content').addClass('container');
                  $('body').css('background-image', 'none');
@@ -25,7 +26,7 @@
 				$('.content-cont').css('marginBottom','60px');
 				 jQuery('body').unbind('touchmove');
 			 
-			 
+
 				 
 				 
                  $('nav , footer').show();
