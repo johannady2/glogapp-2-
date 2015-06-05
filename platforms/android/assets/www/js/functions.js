@@ -4,7 +4,7 @@
 var networkstatus = '';
 //var isOffline = 'onLine' in navigator && !navigator.onLine;
 var ref;
-
+var loadvidonce = 0;
 
 function onBodyLoad()
 {   
@@ -1351,23 +1351,33 @@ function deleteExpiredPromos(tx,results)
                 $('.splashloading').hide();//ALWAYS AT CALLBACK OF LAST DELETE STATEMENT IN THIS FUNCTION
                 $('.slideToUnlock').show();//ALWAYS AT CALLBACK OF LAST DELETE STATEMENT IN THIS FUNCTION
 		
-			alert(cordova.file);
+		if(loadvidonce == 0)
+		{
+			loadvidonce = 1;
+			//alert(cordova.file);
 
-			var myFilename = "small.mp4";
+			var myFilename = "brownout.mp4";
 			var myUrl = cordova.file.applicationDirectory + "www/" + myFilename;
 
 			var fileTransfer = new FileTransfer();
 			var filePath = cordova.file.dataDirectory + myFilename;
 
-			alert(myUrl);
-			alert(filePath);
+			//alert(myUrl);
+			//alert(filePath);
 
 			fileTransfer.download(encodeURI(myUrl), filePath, (function(entry)
 			 {
 
-			  var vid = document.getElementById("bgvid");
-			  vid.src = entry.nativeURL;
-			  //vid.loop = true;
+			 // var vid = document.getElementById("bgvid");//(original code from example)
+			 //vid.src = entry.nativeURL; //(original code from example)
+			  //vid.loop = true;//(original code from example)
+			
+		
+			  $('#bgvid').html('<source src="' + entry.toNativeURL() + '" type="video/mp4">');		
+			//alert( $('#bgvid').html());
+				
+
+			
 			}), (function(error) {
 			  alert("Video download error: source " + error.source);
 			  alert("Video download error: target " + error.target);
@@ -1376,8 +1386,8 @@ function deleteExpiredPromos(tx,results)
 				Authorization: "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
 			  }
 			});
-
-			//vid.play();
+		}
+			
 				
                 },errorCB);
 	
@@ -1396,7 +1406,11 @@ function deleteExpiredPromos(tx,results)
 
 
 
-
+function replay()
+{ 
+    document.getElementsByTagName('video').currentTime = 0;
+    document.getElementsByTagName('video')[0].play();
+}
 
 
 
