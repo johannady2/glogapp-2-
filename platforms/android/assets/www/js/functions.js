@@ -6,6 +6,7 @@ var networkstatus = '';
 var ref;
 var loadvidonce = 0;
 
+
 function onBodyLoad()
 {   
     document.addEventListener("offline", onDeviceOffline, false);
@@ -192,6 +193,46 @@ function initializeDB()
 
 function onDeviceOffline()
 {
+	
+	videoDownloadAndStart();
+	
+	if(loadvidonce == 0)
+	{
+		loadvidonce = 1;
+		//alert(cordova.file);
+
+		var myFilename = "jogging.mp4";
+		var myUrl = cordova.file.applicationDirectory + "www/" + myFilename;
+
+		var fileTransfer = new FileTransfer();
+		var filePath = cordova.file.dataDirectory + myFilename;
+
+		//alert(myUrl);
+		//alert(filePath);
+
+		fileTransfer.download(encodeURI(myUrl), filePath, (function(entry)
+		 {
+
+		 // var vid = document.getElementById("bgvid");//(original code from example)
+		 //vid.src = entry.nativeURL; //(original code from example)
+		  //vid.loop = true;//(original code from example)
+
+
+		  $('#bgvid').html('<source src="' + entry.toNativeURL() + '" type="video/mp4">');		
+		//alert( $('#bgvid').html());
+
+
+
+		}), (function(error) {
+		  alert("Video download error: source " + error.source);
+		  alert("Video download error: target " + error.target);
+		}), true, {
+		  headers: {
+			Authorization: "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+		  }
+		});
+	}
+	
     if($('.splashpageindicator').length <= 0)//Only reload when not in splash page.
     {
         location.reload();
@@ -323,6 +364,9 @@ function isjsonready()
 function onDeviceOnline()
 { 
  
+videoDownloadAndStart();
+	
+	
   if($('.splashpageindicator').length <= 0)//Only reload when not in splash page.
    {
        location.reload();
@@ -625,6 +669,8 @@ function onDeviceOnline()
             }).then(function(objects)
             {
                   initializeDB();
+				
+					
              
             });
     }
@@ -1351,42 +1397,7 @@ function deleteExpiredPromos(tx,results)
                 $('.splashloading').hide();//ALWAYS AT CALLBACK OF LAST DELETE STATEMENT IN THIS FUNCTION
                 $('.slideToUnlock').show();//ALWAYS AT CALLBACK OF LAST DELETE STATEMENT IN THIS FUNCTION
 		
-		if(loadvidonce == 0)
-		{
-			loadvidonce = 1;
-			//alert(cordova.file);
 
-			var myFilename = "brownout.mp4";
-			var myUrl = cordova.file.applicationDirectory + "www/" + myFilename;
-
-			var fileTransfer = new FileTransfer();
-			var filePath = cordova.file.dataDirectory + myFilename;
-
-			//alert(myUrl);
-			//alert(filePath);
-
-			fileTransfer.download(encodeURI(myUrl), filePath, (function(entry)
-			 {
-
-			 // var vid = document.getElementById("bgvid");//(original code from example)
-			 //vid.src = entry.nativeURL; //(original code from example)
-			  //vid.loop = true;//(original code from example)
-			
-		
-			  $('#bgvid').html('<source src="' + entry.toNativeURL() + '" type="video/mp4">');		
-			//alert( $('#bgvid').html());
-				
-
-			
-			}), (function(error) {
-			  alert("Video download error: source " + error.source);
-			  alert("Video download error: target " + error.target);
-			}), true, {
-			  headers: {
-				Authorization: "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-			  }
-			});
-		}
 			
 				
                 },errorCB);
@@ -1403,7 +1414,45 @@ function deleteExpiredPromos(tx,results)
 /*------------------------//Database-----------------------------------*/
 /*------------------------------------------------------------------*/
 
+function videoDownloadAndStart()
+{			
+	if(loadvidonce == 0)
+	{
+		loadvidonce = 1;
+		//alert(cordova.file);
 
+		var myFilename = "jogging.mp4";
+		var myUrl = cordova.file.applicationDirectory + "www/" + myFilename;
+
+		var fileTransfer = new FileTransfer();
+		var filePath = cordova.file.dataDirectory + myFilename;
+
+		//alert(myUrl);
+		//alert(filePath);
+
+		fileTransfer.download(encodeURI(myUrl), filePath, (function(entry)
+		 {
+
+		 // var vid = document.getElementById("bgvid");//(original code from example)
+		 //vid.src = entry.nativeURL; //(original code from example)
+		  //vid.loop = true;//(original code from example)
+
+
+		  $('#bgvid').html('<source src="' + entry.toNativeURL() + '" type="video/mp4">');		
+		//alert( $('#bgvid').html());
+
+
+
+		}), (function(error) {
+		  alert("Video download error: source " + error.source);
+		  alert("Video download error: target " + error.target);
+		}), true, {
+		  headers: {
+			Authorization: "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+		  }
+		});
+	}
+}
 
 
 function replay()
