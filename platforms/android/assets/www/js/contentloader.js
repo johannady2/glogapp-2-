@@ -13,7 +13,7 @@
 			 $('.content-cont').css( 'marginTop','0px' );
     		 $('.content-cont').css('marginBottom', '0px' );
 			 $('body').bind('touchmove', function(e){e.preventDefault()});
-			
+ $('.bxslider').bxSlider();
 
 			 
              $(".slideToUnlock").on('click',function()

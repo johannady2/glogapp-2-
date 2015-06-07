@@ -753,6 +753,41 @@ background: url('img/videoimage.jpg') no-repeat top center;
                                 }
                             }
                             /*//Masonry Stuff*/
+							
+							
+							
+							/*bx slider stuff*/
+							/*{
+								margin: 0px;
+								padding: 0px;
+							}
+							body, html{
+								height: 100%;
+                            }*/
+							.bx-viewport, .bx-wrapper, .bxslider li img{
+								position:absolute;
+								width:100%;
+								height:100% !important;
+                                min-width: 100%;
+                                min-height: 100%;
+								top:0;
+								left:0;
+                                width: auto;
+                                height: auto;
+                                z-index: -100;   
+							}
+							.bxslider, .bxslider li{
+								height: 100% !important;;
+							}
+							.bxslider li{
+								background-repeat: no-repeat;
+								background-position: top center;
+								background-size: cover;
+							}
+							.bx-wrapper .bx-viewport{
+								border: none !important;
+							}
+							/*//bx slider stuff*/
 
 /*--------------------------------------------------------------
 11.0 Media Queries
