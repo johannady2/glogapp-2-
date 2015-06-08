@@ -6,15 +6,17 @@ var networkstatus = '';
 var ref;
 var loadvidonce = 0;
 
-var timerId = setInterval(function(){  bugFix(); }, 1000);
+var timerId = setInterval(function(){  bugFix(); }, 3000);
 
-
+/*
 
 function onBodyLoad()
 {	
 	document.addEventListener("deviceready", videoDownloadAndStart , false);
 
 	checkNetwork();
+	
+	
 	
 }
 
@@ -25,7 +27,17 @@ function checkNetwork()
     document.addEventListener("online", onDeviceOnline, false);
 	
 
-}	
+}	*/
+
+function onBodyLoad()
+{	
+	document.addEventListener("offline", onDeviceOffline, false);
+    document.addEventListener("online", onDeviceOnline, false);
+	
+	
+	
+}
+
 
 function bugFix()//sometimes noti popups don't appear so we check it and make them appear.
 {
