@@ -2681,12 +2681,12 @@ function queryItemDetailsByBarcode(tx,scanResult)
         
         //alert('glogqlen ='+glogqlen);
         
-        if(glogqlen.length>0 && currentvalue != 0 && currentvalue !='0' && testinput(/[^0-9.]/, currentvalue)==0)//if not empty && not zero && (does not contain any none numeric && glogqlen == 1)
+        if(glogqlen.length>0 && currentvalue != 0 && currentvalue !='0' && testinput(/[^0-9]/, currentvalue)==0)//if not empty && not zero && (does not contain any none numeric && glogqlen == 1)
         {
           //alert('in if');
             //alert('currentvalue =' + currentvalue);
             
-            var newvalue = currentvalue.toString().replace(/[^0-9\.]+/g, '');
+            var newvalue = currentvalue.toString().replace(/[^0-9]+/g, '');
             $('#glogquantity').val(newvalue);
             var qval = $('#glogquantity').val();
             
@@ -2699,7 +2699,7 @@ function queryItemDetailsByBarcode(tx,scanResult)
             currentvalue = 1;
            // //alert('currentvalue =' + currentvalue);
             
-            var newvalue = currentvalue.toString().replace(/[^0-9\.]+/g, '');
+            var newvalue = currentvalue.toString().replace(/[^0-9]+/g, '');
             $('#glogquantity').val('');
             var qval = 1;
 
