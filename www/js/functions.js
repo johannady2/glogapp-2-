@@ -1438,7 +1438,7 @@ function deleteExpiredPromos(tx,results)
 /*------------------------//Database-----------------------------------*/
 /*------------------------------------------------------------------*/
 
-
+/*
 function videoDownloadAndStart()
 {	
 	if(loadvidonce == 0)
@@ -1490,7 +1490,7 @@ function replay()
     document.getElementsByTagName('video').currentTime = 0;
     document.getElementsByTagName('video')[0].play();
 }
-
+*/
 
 
 /*----------------------------------------------------------------------*/
@@ -2835,9 +2835,9 @@ function editOrderPageQuantityInputListener()
          var editorderlen = $.trim($('.edit-order-quantity').val());
 
         
-        if(editorderlen.length>0 && currentq != 0 && currentq !='0' && testinput(/[^0-9.]/, currentq)==0)//if not empty && not zero && (does not contain any none numeric && glogqlen == 1)
+        if(editorderlen.length>0 && currentq != 0 && currentq !='0' && testinput(/[^0-9]/, currentq)==0)//if not empty && not zero && (does not contain any none numeric && glogqlen == 1)
         {
-            var newq = currentq.toString().replace(/[^0-9\.]+/g, '');
+            var newq = currentq.toString().replace(/[^0-9]+/g, '');
             $('.edit-order-quantity').val(newq);
             var qval = $('.edit-order-quantity').val();
    
@@ -2845,7 +2845,7 @@ function editOrderPageQuantityInputListener()
         else
         {
             currentq = 1;
-            var newq = currentq.toString().replace(/[^0-9\.]+/g, '');
+            var newq = currentq.toString().replace(/[^0-9]+/g, '');
             $('.edit-order-quantity').val('');
             var qval = 1;
 
